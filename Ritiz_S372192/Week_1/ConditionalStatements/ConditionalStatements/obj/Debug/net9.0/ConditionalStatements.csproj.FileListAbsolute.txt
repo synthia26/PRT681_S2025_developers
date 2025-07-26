@@ -1,0 +1,15 @@
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/bin/Debug/net9.0/ConditionalStatements
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/bin/Debug/net9.0/ConditionalStatements.deps.json
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/bin/Debug/net9.0/ConditionalStatements.runtimeconfig.json
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/bin/Debug/net9.0/ConditionalStatements.dll
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/bin/Debug/net9.0/ConditionalStatements.pdb
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/obj/Debug/net9.0/ConditionalStatements.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/obj/Debug/net9.0/ConditionalStatements.AssemblyInfoInputs.cache
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/obj/Debug/net9.0/ConditionalStatements.AssemblyInfo.cs
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/obj/Debug/net9.0/ConditionalStatements.csproj.CoreCompileInputs.cache
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/obj/Debug/net9.0/ConditionalStatements.sourcelink.json
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/obj/Debug/net9.0/ConditionalStatements.dll
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/obj/Debug/net9.0/refint/ConditionalStatements.dll
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/obj/Debug/net9.0/ConditionalStatements.pdb
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/obj/Debug/net9.0/ConditionalStatements.genruntimeconfig.cache
+/Users/ritizkarkee/Desktop/PRT681_S2025_developers/Ritiz_S372192/Week_1/ConditionalStatements/ConditionalStatements/obj/Debug/net9.0/ref/ConditionalStatements.dll
