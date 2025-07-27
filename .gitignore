@@ -1,2 +1,4 @@
 #ignore solution and vs code files 
 .vs
+**/.DS_Store
+**/~$*
