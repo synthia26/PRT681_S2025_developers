@@ -1,0 +1,8 @@
+C:\Users\barua\source\repos\TryParse\TryParse\bin\Debug\TryParse.exe.config
+C:\Users\barua\source\repos\TryParse\TryParse\bin\Debug\TryParse.exe
+C:\Users\barua\source\repos\TryParse\TryParse\bin\Debug\TryParse.pdb
+C:\Users\barua\source\repos\TryParse\TryParse\obj\Debug\TryParse.csproj.AssemblyReference.cache
+C:\Users\barua\source\repos\TryParse\TryParse\obj\Debug\TryParse.csproj.CoreCompileInputs.cache
+C:\Users\barua\source\repos\TryParse\TryParse\obj\Debug\TryParse.exe
+C:\Users\barua\source\repos\TryParse\TryParse\obj\Debug\TryParse.pdb
+C:\Users\barua\source\repos\TryParse\TryParse\obj\Debug\TryParse.exe.config

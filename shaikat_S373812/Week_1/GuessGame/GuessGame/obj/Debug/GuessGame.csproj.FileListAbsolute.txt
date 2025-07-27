@@ -1,0 +1,8 @@
+C:\Users\barua\source\repos\GuessGame\GuessGame\bin\Debug\GuessGame.exe.config
+C:\Users\barua\source\repos\GuessGame\GuessGame\bin\Debug\GuessGame.exe
+C:\Users\barua\source\repos\GuessGame\GuessGame\bin\Debug\GuessGame.pdb
+C:\Users\barua\source\repos\GuessGame\GuessGame\obj\Debug\GuessGame.csproj.AssemblyReference.cache
+C:\Users\barua\source\repos\GuessGame\GuessGame\obj\Debug\GuessGame.csproj.CoreCompileInputs.cache
+C:\Users\barua\source\repos\GuessGame\GuessGame\obj\Debug\GuessGame.exe
+C:\Users\barua\source\repos\GuessGame\GuessGame\obj\Debug\GuessGame.pdb
+C:\Users\barua\source\repos\GuessGame\GuessGame\obj\Debug\GuessGame.exe.config

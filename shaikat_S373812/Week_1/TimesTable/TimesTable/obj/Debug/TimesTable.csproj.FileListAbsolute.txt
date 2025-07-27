@@ -1,0 +1,8 @@
+C:\Users\barua\source\repos\TimesTable\TimesTable\bin\Debug\TimesTable.exe.config
+C:\Users\barua\source\repos\TimesTable\TimesTable\bin\Debug\TimesTable.exe
+C:\Users\barua\source\repos\TimesTable\TimesTable\bin\Debug\TimesTable.pdb
+C:\Users\barua\source\repos\TimesTable\TimesTable\obj\Debug\TimesTable.csproj.AssemblyReference.cache
+C:\Users\barua\source\repos\TimesTable\TimesTable\obj\Debug\TimesTable.csproj.CoreCompileInputs.cache
+C:\Users\barua\source\repos\TimesTable\TimesTable\obj\Debug\TimesTable.exe
+C:\Users\barua\source\repos\TimesTable\TimesTable\obj\Debug\TimesTable.pdb
+C:\Users\barua\source\repos\TimesTable\TimesTable\obj\Debug\TimesTable.exe.config

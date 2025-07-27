@@ -1,0 +1,8 @@
+C:\Users\barua\source\repos\UserData\UserData\bin\Debug\UserData.exe.config
+C:\Users\barua\source\repos\UserData\UserData\bin\Debug\UserData.exe
+C:\Users\barua\source\repos\UserData\UserData\bin\Debug\UserData.pdb
+C:\Users\barua\source\repos\UserData\UserData\obj\Debug\UserData.csproj.AssemblyReference.cache
+C:\Users\barua\source\repos\UserData\UserData\obj\Debug\UserData.csproj.CoreCompileInputs.cache
+C:\Users\barua\source\repos\UserData\UserData\obj\Debug\UserData.exe
+C:\Users\barua\source\repos\UserData\UserData\obj\Debug\UserData.pdb
+C:\Users\barua\source\repos\UserData\UserData\obj\Debug\UserData.exe.config
