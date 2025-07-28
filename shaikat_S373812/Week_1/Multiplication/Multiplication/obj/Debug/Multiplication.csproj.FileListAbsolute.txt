@@ -1,0 +1,8 @@
+C:\Users\barua\source\repos\Multiplication\Multiplication\bin\Debug\Multiplication.exe.config
+C:\Users\barua\source\repos\Multiplication\Multiplication\bin\Debug\Multiplication.exe
+C:\Users\barua\source\repos\Multiplication\Multiplication\bin\Debug\Multiplication.pdb
+C:\Users\barua\source\repos\Multiplication\Multiplication\obj\Debug\Multiplication.csproj.AssemblyReference.cache
+C:\Users\barua\source\repos\Multiplication\Multiplication\obj\Debug\Multiplication.csproj.CoreCompileInputs.cache
+C:\Users\barua\source\repos\Multiplication\Multiplication\obj\Debug\Multiplication.exe
+C:\Users\barua\source\repos\Multiplication\Multiplication\obj\Debug\Multiplication.pdb
+C:\Users\barua\source\repos\Multiplication\Multiplication\obj\Debug\Multiplication.exe.config

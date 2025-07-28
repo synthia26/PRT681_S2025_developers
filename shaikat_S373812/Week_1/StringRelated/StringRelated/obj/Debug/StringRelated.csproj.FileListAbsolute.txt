@@ -1,0 +1,8 @@
+C:\Users\barua\source\repos\StringRelated\StringRelated\bin\Debug\StringRelated.exe.config
+C:\Users\barua\source\repos\StringRelated\StringRelated\bin\Debug\StringRelated.exe
+C:\Users\barua\source\repos\StringRelated\StringRelated\bin\Debug\StringRelated.pdb
+C:\Users\barua\source\repos\StringRelated\StringRelated\obj\Debug\StringRelated.csproj.AssemblyReference.cache
+C:\Users\barua\source\repos\StringRelated\StringRelated\obj\Debug\StringRelated.csproj.CoreCompileInputs.cache
+C:\Users\barua\source\repos\StringRelated\StringRelated\obj\Debug\StringRelated.exe
+C:\Users\barua\source\repos\StringRelated\StringRelated\obj\Debug\StringRelated.pdb
+C:\Users\barua\source\repos\StringRelated\StringRelated\obj\Debug\StringRelated.exe.config
