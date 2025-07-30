@@ -1,0 +1,46 @@
+﻿@using System.Linq
+@model List<MVCApplication.Models.TaskModel>
+
+@{
+    ViewData["Title"] = "ToDo App";
+}
+
+<h1>ToDo List</h1>
+
+<form asp-action="AddTask" method="post">
+    <input type="text" name="taskDescription" placeholder="Enter a new task..." required />
+    <button type="submit">Add</button>
+</form>
+
+<hr />
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+        @foreach (var task in Model)
+        {
+            <li style="margin-bottom: 10px;">
+                @if (task.IsCompleted)
+                {
+                    <s>@task.Description</s>
+                }
+                else
+                {
+                    @task.Description
+                }
+
+                @if (!task.IsCompleted)
+                {
+                    <form asp-action="CompleteTask" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@task.Id" />
+                        <button type="submit">Mark as Done</button>
+                    </form>
+                }
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No tasks found.</p>
+}

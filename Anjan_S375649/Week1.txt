@@ -1,0 +1,2 @@
+This is week 1 learning.setting up vscode and git hub.
+
