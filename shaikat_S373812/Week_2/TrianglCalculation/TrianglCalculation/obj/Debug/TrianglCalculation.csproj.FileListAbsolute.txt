@@ -1,0 +1,8 @@
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\TrianglCalculation\TrianglCalculation\bin\Debug\TrianglCalculation.exe.config
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\TrianglCalculation\TrianglCalculation\bin\Debug\TrianglCalculation.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\TrianglCalculation\TrianglCalculation\bin\Debug\TrianglCalculation.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\TrianglCalculation\TrianglCalculation\obj\Debug\TrianglCalculation.csproj.AssemblyReference.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\TrianglCalculation\TrianglCalculation\obj\Debug\TrianglCalculation.csproj.CoreCompileInputs.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\TrianglCalculation\TrianglCalculation\obj\Debug\TrianglCalculation.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\TrianglCalculation\TrianglCalculation\obj\Debug\TrianglCalculation.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\TrianglCalculation\TrianglCalculation\obj\Debug\TrianglCalculation.exe.config

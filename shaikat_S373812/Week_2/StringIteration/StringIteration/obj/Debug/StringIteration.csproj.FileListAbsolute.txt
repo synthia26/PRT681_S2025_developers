@@ -1,0 +1,8 @@
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringIteration\StringIteration\bin\Debug\StringIteration.exe.config
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringIteration\StringIteration\bin\Debug\StringIteration.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringIteration\StringIteration\bin\Debug\StringIteration.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringIteration\StringIteration\obj\Debug\StringIteration.csproj.AssemblyReference.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringIteration\StringIteration\obj\Debug\StringIteration.csproj.CoreCompileInputs.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringIteration\StringIteration\obj\Debug\StringIteration.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringIteration\StringIteration\obj\Debug\StringIteration.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringIteration\StringIteration\obj\Debug\StringIteration.exe.config
