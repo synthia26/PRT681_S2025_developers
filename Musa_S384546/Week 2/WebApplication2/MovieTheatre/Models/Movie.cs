@@ -16,6 +16,7 @@ public class Movie
     [Required]
     public string Director { get; set; }
 
+    [Required]
     [EmailAddress]
     [Display(Name = "Contact Email")]
     public string ContactEmail { get; set; }

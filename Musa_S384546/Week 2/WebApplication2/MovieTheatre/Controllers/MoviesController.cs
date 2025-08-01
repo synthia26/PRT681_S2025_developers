@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using MovieTheatre.Data;
 using MovieTheatre.Models;
 using MovieTheatre.Models.ViewModels;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace MovieTheatre.Controllers;
 
@@ -44,14 +46,14 @@ public class MoviesController : Controller
         }
 
         // Handle Image Upload
-        string imagePath = null;
+        string? imagePath = null;
         if (viewModel.PosterFile != null)
         {
             var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
             if (!Directory.Exists(uploads))
                 Directory.CreateDirectory(uploads);
 
-            var fileName = Guid.NewGuid() + Path.GetExtension(viewModel.PosterFile.FileName);
+            var fileName = Guid.NewGuid() + Path.GetExtension(viewModel.PosterFile.FileName ?? string.Empty);
             var filePath = Path.Combine(uploads, fileName);
 
             using (var stream = new FileStream(filePath, FileMode.Create))
@@ -62,7 +64,7 @@ public class MoviesController : Controller
             imagePath = "/uploads/" + fileName;
         }
 
-        viewModel.Movie.PosterPath = imagePath;
+        viewModel.Movie.PosterPath = imagePath ?? string.Empty;
 
         _context.Add(viewModel.Movie);
         await _context.SaveChangesAsync();
@@ -71,28 +73,65 @@ public class MoviesController : Controller
 
     
     // GET: Movies/Edit/5
-    public async Task<IActionResult> Edit(int id, Movie movie)
+    public async Task<IActionResult> Edit(int id)
     {
-        if (id != movie.Id) return NotFound();
-        if (ModelState.IsValid)
+        var movie = await _context.Movies.FindAsync(id);
+        if (movie == null) return NotFound();
+        
+        var viewModel = new MovieFormViewModel
         {
-            try
-            {
-                _context.Update(movie);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.Movies.Any(e => e.Id == id))
-                    return NotFound();
-                else
-                    throw;
-            }
-            return RedirectToAction(nameof(Index));
-            
+            Movie = movie,
+            Categories = _context.Categories.ToList()
+        };
+        
+        return View(viewModel);
+    }
+
+    // POST: Movies/Edit/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(int id, MovieFormViewModel viewModel)
+    {
+        if (id != viewModel.Movie.Id) return NotFound();
+        
+        if (!ModelState.IsValid)
+        {
+            viewModel.Categories = _context.Categories.ToList();
+            return View(viewModel);
         }
-        ViewBag.Categories = _context.Categories.ToList();
-        return View(movie);
+
+        try
+        {
+            // Handle Image Upload if new file is provided
+            if (viewModel.PosterFile != null)
+            {
+                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+                if (!Directory.Exists(uploads))
+                    Directory.CreateDirectory(uploads);
+
+                var fileName = Guid.NewGuid() + Path.GetExtension(viewModel.PosterFile.FileName ?? string.Empty);
+                var filePath = Path.Combine(uploads, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await viewModel.PosterFile.CopyToAsync(stream);
+                }
+
+                viewModel.Movie.PosterPath = "/uploads/" + fileName;
+            }
+
+            _context.Update(viewModel.Movie);
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!_context.Movies.Any(e => e.Id == id))
+                return NotFound();
+            else
+                throw;
+        }
+        
+        return RedirectToAction(nameof(Index));
     }
     
     // POST: Movies/Delete/5

@@ -1,0 +1,79 @@
+@model MovieTheatre.Models.ViewModels.MovieFormViewModel
+
+@{
+    ViewData["Title"] = "Edit Movie";
+}
+
+<div class="max-w-2xl mx-auto py-10 px-4">
+    <h2 class="text-3xl font-bold mb-6 text-gray-800">🎬 Edit Movie</h2>
+
+    <form asp-action="Edit" method="post" enctype="multipart/form-data" class="space-y-6">
+        <input type="hidden" asp-for="Movie.Id" />
+        
+        <div>
+            <label asp-for="Movie.Name" class="block text-sm font-medium text-gray-700">Name</label>
+            <input asp-for="Movie.Name" class="w-full border rounded px-3 py-2" />
+            <span asp-validation-for="Movie.Name" class="text-red-600 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="Movie.ReleaseDate" class="block text-sm font-medium text-gray-700">Release Date</label>
+            <input asp-for="Movie.ReleaseDate" type="date" class="w-full border rounded px-3 py-2" />
+        </div>
+
+        <div>
+            <label asp-for="Movie.Director" class="block text-sm font-medium text-gray-700">Director</label>
+            <input asp-for="Movie.Director" class="w-full border rounded px-3 py-2" />
+        </div>
+
+        <div>
+            <label asp-for="Movie.ContactEmail" class="block text-sm font-medium text-gray-700">Contact Email</label>
+            <input asp-for="Movie.ContactEmail" type="email" class="w-full border rounded px-3 py-2" />
+            <span asp-validation-for="Movie.ContactEmail" class="text-red-600 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="Movie.Language" class="block text-sm font-medium text-gray-700">Language</label>
+            <select asp-for="Movie.Language" class="w-full border rounded px-3 py-2">
+                <option value="">-- Select --</option>
+                @foreach (var lang in Enum.GetValues(typeof(Language)))
+                {
+                    <option value="@lang">@lang</option>
+                }
+            </select>
+            <span asp-validation-for="Movie.Language" class="text-red-600 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="Movie.CategoryId" class="block text-sm font-medium text-gray-700">Category</label>
+            <select asp-for="Movie.CategoryId" class="w-full border rounded px-3 py-2">
+                <option value="">-- Select --</option>
+                @foreach (var cat in Model.Categories)
+                {
+                    <option value="@cat.Id">@cat.Name</option>
+                }
+            </select>
+            <span asp-validation-for="Movie.CategoryId" class="text-red-600 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="PosterFile" class="block text-sm font-medium text-gray-700">Poster Image</label>
+            <input asp-for="PosterFile" type="file" class="block mt-1 text-sm text-gray-500" />
+            @if (!string.IsNullOrEmpty(Model.Movie.PosterPath))
+            {
+                <div class="mt-2">
+                    <p class="text-sm text-gray-600">Current poster: @Model.Movie.PosterPath</p>
+                </div>
+            }
+        </div>
+
+        <div class="flex items-center gap-4">
+            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded">Save</button>
+            <a asp-action="Index" class="text-gray-700 hover:underline">Cancel</a>
+        </div>
+    </form>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>

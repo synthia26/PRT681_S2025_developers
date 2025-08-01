@@ -28,6 +28,7 @@
         <div>
             <label asp-for="Movie.ContactEmail" class="block text-sm font-medium text-gray-700">Contact Email</label>
             <input asp-for="Movie.ContactEmail" type="email" class="w-full border rounded px-3 py-2" />
+            <span asp-validation-for="Movie.ContactEmail" class="text-red-600 text-sm"></span>
         </div>
 
         <div>
@@ -39,6 +40,7 @@
                     <option value="@lang">@lang</option>
                 }
             </select>
+            <span asp-validation-for="Movie.Language" class="text-red-600 text-sm"></span>
         </div>
 
         <div>
@@ -50,6 +52,7 @@
                     <option value="@cat.Id">@cat.Name</option>
                 }
             </select>
+            <span asp-validation-for="Movie.CategoryId" class="text-red-600 text-sm"></span>
         </div>
 
         <div>
