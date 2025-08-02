@@ -1,8 +1,11 @@
 @page "/movies/create"
 @using Microsoft.EntityFrameworkCore
 @using MovieTheater.Models
+@using Microsoft.AspNetCore.Components.Forms
 @inject IDbContextFactory<DataContext> DbFactory
 @inject NavigationManager NavigationManager
+@inject IWebHostEnvironment Environment
+@rendermode InteractiveServer
 
 <PageTitle>Create</PageTitle>
 
@@ -12,7 +15,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <EditForm method="post" Model="Movie" OnValidSubmit="AddMovie" FormName="create" Enhance>
+        <EditForm Model="Movie" OnValidSubmit="AddMovie">
             <DataAnnotationsValidator />
             <ValidationSummary class="text-danger" role="alert"/>
             <div class="mb-3">
@@ -61,10 +64,19 @@
                 <ValidationMessage For="() => Movie.CategoryId" class="text-danger" /> 
             </div>        
             <div class="mb-3">
-                <label for="posterpath" class="form-label">PosterPath:</label> 
-                <InputText id="posterpath" @bind-Value="Movie.PosterPath" class="form-control" /> 
-                <ValidationMessage For="() => Movie.PosterPath" class="text-danger" /> 
-            </div>        
+                <label for="posterfile" class="form-label">Poster Image:</label> 
+                <InputFile id="posterfile" OnChange="HandleFileUpload" class="form-control" accept="image/*" /> 
+                @if (!string.IsNullOrEmpty(uploadMessage))
+                {
+                    <div class="text-info mt-2">@uploadMessage</div>
+                }
+                @if (!string.IsNullOrEmpty(Movie.PosterPath))
+                {
+                    <div class="mt-2">
+                        <small class="text-muted">Selected file: @Path.GetFileName(Movie.PosterPath)</small>
+                    </div>
+                }
+            </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </EditForm>
     </div>
@@ -75,15 +87,64 @@
 </div>
 
 @code {
-    [SupplyParameterFromForm]
     private Movie Movie { get; set; } = new();
     
     private List<Category> Categories { get; set; } = new();
+    private string uploadMessage = string.Empty;
+    private const long MaxFileSize = 5 * 1024 * 1024; // 5MB
 
     protected override async Task OnInitializedAsync()
     {
         using var context = DbFactory.CreateDbContext();
         Categories = await context.Category.ToListAsync();
+    }
+
+    private async Task HandleFileUpload(InputFileChangeEventArgs e)
+    {
+        uploadMessage = string.Empty;
+        
+        var file = e.File;
+        if (file != null)
+        {
+            // Validate file size
+            if (file.Size > MaxFileSize)
+            {
+                uploadMessage = "File size must be less than 5MB.";
+                return;
+            }
+
+            // Validate file type
+            var allowedTypes = new[] { "image/jpeg", "image/jpg", "image/png", "image/gif", "image/webp" };
+            if (!allowedTypes.Contains(file.ContentType))
+            {
+                uploadMessage = "Only image files (JPEG, PNG, GIF, WebP) are allowed.";
+                return;
+            }
+
+            try
+            {
+                // Create uploads directory if it doesn't exist
+                var uploadsPath = Path.Combine(Environment.WebRootPath, "uploads", "movies");
+                Directory.CreateDirectory(uploadsPath);
+
+                // Generate unique filename
+                var fileExtension = Path.GetExtension(file.Name);
+                var fileName = $"{Guid.NewGuid()}{fileExtension}";
+                var filePath = Path.Combine(uploadsPath, fileName);
+
+                // Save file
+                using var stream = new FileStream(filePath, FileMode.Create);
+                await file.OpenReadStream(MaxFileSize).CopyToAsync(stream);
+
+                // Store relative path in movie object
+                Movie.PosterPath = $"/uploads/movies/{fileName}";
+                uploadMessage = "File uploaded successfully!";
+            }
+            catch (Exception ex)
+            {
+                uploadMessage = $"Error uploading file: {ex.Message}";
+            }
+        }
     }
 
     // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.

@@ -20,7 +20,16 @@
     <PropertyColumn Property="movie => movie.Director" />
     <PropertyColumn Property="movie => movie.ContactEmail" />
     <PropertyColumn Property="movie => movie.Language" />
-    <PropertyColumn Property="movie => movie.PosterPath" />
+    <TemplateColumn Title="Poster" Context="movie">
+        @if (!string.IsNullOrEmpty(movie.PosterPath))
+        {
+            <img src="@movie.PosterPath" alt="@movie.Name poster" style="width: 50px; height: 75px; object-fit: cover;" />
+        }
+        else
+        {
+            <span class="text-muted">No image</span>
+        }
+    </TemplateColumn>
 
     <TemplateColumn Context="movie">
         <a href="@($"movies/edit?id={movie.Id}")">Edit</a> |

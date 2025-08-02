@@ -30,5 +30,5 @@ public class Movie
     // public Category Category { get; set; }
 
     // New field for image path
-    public string PosterPath { get; set; }
+    public string? PosterPath { get; set; }
 }
