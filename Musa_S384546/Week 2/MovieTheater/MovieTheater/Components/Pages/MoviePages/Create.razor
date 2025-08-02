@@ -7,83 +7,173 @@
 @inject IWebHostEnvironment Environment
 @rendermode InteractiveServer
 
-<PageTitle>Create</PageTitle>
+<PageTitle>Create Movie - MovieTheater</PageTitle>
 
-<h1>Create</h1>
-
-<h2>Movie</h2>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <EditForm Model="Movie" OnValidSubmit="AddMovie">
-            <DataAnnotationsValidator />
-            <ValidationSummary class="text-danger" role="alert"/>
-            <div class="mb-3">
-                <span class="text-danger">*</span>
-                <label for="name" class="form-label">Name:</label> 
-                <InputText id="name" @bind-Value="Movie.Name" class="form-control" aria-required="true"/> 
-                <ValidationMessage For="() => Movie.Name" class="text-danger" /> 
-            </div>        
-            <div class="mb-3">
-                <label for="releasedate" class="form-label">ReleaseDate:</label> 
-                <InputDate id="releasedate" @bind-Value="Movie.ReleaseDate" class="form-control" /> 
-                <ValidationMessage For="() => Movie.ReleaseDate" class="text-danger" /> 
-            </div>        
-            <div class="mb-3">
-                <span class="text-danger">*</span>
-                <label for="director" class="form-label">Director:</label> 
-                <InputText id="director" @bind-Value="Movie.Director" class="form-control" aria-required="true"/> 
-                <ValidationMessage For="() => Movie.Director" class="text-danger" /> 
-            </div>        
-            <div class="mb-3">
-                <label for="contactemail" class="form-label">ContactEmail:</label> 
-                <InputText id="contactemail" @bind-Value="Movie.ContactEmail" class="form-control" /> 
-                <ValidationMessage For="() => Movie.ContactEmail" class="text-danger" /> 
-            </div>        
-            <div class="mb-3">
-                <span class="text-danger">*</span>
-                <label for="language" class="form-label">Language:</label> 
-                <select @bind="Movie.Language" class="form-control">
-                    @foreach (var language in Enum.GetValues<Language>())
-                    {
-                        <option value="@language">@language</option>
-                    }
-                </select>
-                <ValidationMessage For="() => Movie.Language" class="text-danger" /> 
-            </div>        
-            <div class="mb-3">
-                <span class="text-danger">*</span>
-                <label for="category" class="form-label">Category:</label> 
-                <InputSelect id="category" @bind-Value="Movie.CategoryId" class="form-control" aria-required="true">
-                    <option value="">-- Select Category --</option>
-                    @foreach (var category in Categories)
-                    {
-                        <option value="@category.Id">@category.Name</option>
-                    }
-                </InputSelect>
-                <ValidationMessage For="() => Movie.CategoryId" class="text-danger" /> 
-            </div>        
-            <div class="mb-3">
-                <label for="posterfile" class="form-label">Poster Image:</label> 
-                <InputFile id="posterfile" OnChange="HandleFileUpload" class="form-control" accept="image/*" /> 
-                @if (!string.IsNullOrEmpty(uploadMessage))
-                {
-                    <div class="text-info mt-2">@uploadMessage</div>
-                }
-                @if (!string.IsNullOrEmpty(Movie.PosterPath))
-                {
-                    <div class="mt-2">
-                        <small class="text-muted">Selected file: @Path.GetFileName(Movie.PosterPath)</small>
-                    </div>
-                }
-            </div>
-            <button type="submit" class="btn btn-primary">Create</button>
-        </EditForm>
+<!-- Page Header -->
+<div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+        <div>
+            <h1 class="text-4xl font-bold text-base-content">Create Movie</h1>
+            <p class="text-base-content/70 mt-2">Add a new movie to your collection</p>
+        </div>
+        <a href="/movies" class="btn btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Movies
+        </a>
     </div>
-</div>
 
-<div>
-    <a href="/movies">Back to List</a>
+    <!-- Form Card -->
+    <div class="max-w-4xl mx-auto">
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <EditForm Model="Movie" OnValidSubmit="AddMovie">
+                    <DataAnnotationsValidator />
+                    
+                    @if (!string.IsNullOrEmpty(uploadMessage))
+                    {
+                        <div class="alert alert-info mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>@uploadMessage</span>
+                        </div>
+                    }
+
+                    <ValidationSummary class="alert alert-error mb-6" role="alert"/>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Left Column -->
+                        <div class="space-y-6">
+                            <!-- Movie Name -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">
+                                        Movie Name <span class="text-error">*</span>
+                                    </span>
+                                </label>
+                                <InputText @bind-Value="Movie.Name" class="input input-bordered w-full" placeholder="Enter movie name" />
+                                <ValidationMessage For="() => Movie.Name" class="label-text-alt text-error mt-1" />
+                            </div>
+
+                            <!-- Director -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">
+                                        Director <span class="text-error">*</span>
+                                    </span>
+                                </label>
+                                <InputText @bind-Value="Movie.Director" class="input input-bordered w-full" placeholder="Enter director name" />
+                                <ValidationMessage For="() => Movie.Director" class="label-text-alt text-error mt-1" />
+                            </div>
+
+                            <!-- Release Date -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">Release Date</span>
+                                </label>
+                                <InputDate @bind-Value="Movie.ReleaseDate" class="input input-bordered w-full" />
+                                <ValidationMessage For="() => Movie.ReleaseDate" class="label-text-alt text-error mt-1" />
+                            </div>
+
+                            <!-- Contact Email -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">Contact Email</span>
+                                </label>
+                                <InputText @bind-Value="Movie.ContactEmail" class="input input-bordered w-full" placeholder="contact@example.com" type="email" />
+                                <ValidationMessage For="() => Movie.ContactEmail" class="label-text-alt text-error mt-1" />
+                                <label class="label">
+                                    <span class="label-text-alt text-base-content/60">Optional contact information</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="space-y-6">
+                            <!-- Language -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">
+                                        Language <span class="text-error">*</span>
+                                    </span>
+                                </label>
+                                <select @bind="Movie.Language" class="select select-bordered w-full">
+                                    @foreach (var language in Enum.GetValues<Language>())
+                                    {
+                                        <option value="@language">@language</option>
+                                    }
+                                </select>
+                                <ValidationMessage For="() => Movie.Language" class="label-text-alt text-error mt-1" />
+                            </div>
+
+                            <!-- Category -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">
+                                        Category <span class="text-error">*</span>
+                                    </span>
+                                </label>
+                                <InputSelect @bind-Value="Movie.CategoryId" class="select select-bordered w-full">
+                                    <option value="">-- Select Category --</option>
+                                    @foreach (var category in Categories)
+                                    {
+                                        <option value="@category.Id">@category.Name</option>
+                                    }
+                                </InputSelect>
+                                <ValidationMessage For="() => Movie.CategoryId" class="label-text-alt text-error mt-1" />
+                                <label class="label">
+                                    <span class="label-text-alt">
+                                        <a href="/categories/create" class="link link-primary">Create new category</a>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <!-- Poster Upload -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">Poster Image</span>
+                                </label>
+                                <InputFile OnChange="HandleFileUpload" class="file-input file-input-bordered w-full" accept="image/*" />
+                                <label class="label">
+                                    <span class="label-text-alt text-base-content/60">Upload movie poster (max 5MB)</span>
+                                </label>
+                                @if (!string.IsNullOrEmpty(Movie.PosterPath))
+                                {
+                                    <div class="mt-4 p-4 bg-base-200 rounded-lg">
+                                        <div class="flex items-center gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="text-sm">File uploaded: @Path.GetFileName(Movie.PosterPath)</span>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="divider my-8"></div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-end">
+                        <a href="/movies" class="btn btn-outline">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                            Create Movie
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
 </div>
 
 @code {

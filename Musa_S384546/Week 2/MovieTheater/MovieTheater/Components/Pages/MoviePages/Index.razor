@@ -6,37 +6,96 @@
 @inject IDbContextFactory<DataContext> DbFactory
 @inject NavigationManager NavigationManager
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Movies - MovieTheater</PageTitle>
 
-<h1>Index</h1>
+<!-- Page Header -->
+<div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+        <div>
+            <h1 class="text-4xl font-bold text-base-content">Movies</h1>
+            <p class="text-base-content/70 mt-2">Manage your movie collection</p>
+        </div>
+        <a href="/movies/create" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            Add New Movie
+        </a>
+    </div>
 
-<p>
-    <a href="movies/create">Create New</a>
-</p>
+    <!-- Movies Grid -->
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body p-0">
+            <div class="overflow-x-auto">
+                <QuickGrid Class="table table-zebra w-full" Items="context.Movie">
+                    <TemplateColumn Title="Poster" Context="movie" Class="w-20">
+                        <div class="flex justify-center py-2">
+                            @if (!string.IsNullOrEmpty(movie.PosterPath))
+                            {
+                                <img src="@movie.PosterPath" alt="@movie.Name poster" 
+                                     class="w-12 h-16 object-cover rounded shadow-sm" />
+                            }
+                            else
+                            {
+                                <div class="w-12 h-16 bg-base-200 rounded flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-base-content/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                            }
+                        </div>
+                    </TemplateColumn>
+                    
+                    <PropertyColumn Property="movie => movie.Name" Title="Movie Title" Class="font-semibold" />
+                    
+                    <TemplateColumn Title="Release Date" Context="movie">
+                        <span class="text-sm">@movie.ReleaseDate.ToString("MMM dd, yyyy")</span>
+                    </TemplateColumn>
+                    
+                    <PropertyColumn Property="movie => movie.Director" Title="Director" />
+                    
+                    <TemplateColumn Title="Language" Context="movie">
+                        <span class="badge badge-outline badge-sm">@movie.Language</span>
+                    </TemplateColumn>
+                    
+                    <TemplateColumn Title="Contact" Context="movie">
+                        @if (!string.IsNullOrEmpty(movie.ContactEmail))
+                        {
+                            <a href="mailto:@movie.ContactEmail" class="link link-primary text-sm">
+                                @movie.ContactEmail
+                            </a>
+                        }
+                        else
+                        {
+                            <span class="text-base-content/50 text-sm">No contact</span>
+                        }
+                    </TemplateColumn>
 
-<QuickGrid Class="table" Items="context.Movie">
-    <PropertyColumn Property="movie => movie.Name" />
-    <PropertyColumn Property="movie => movie.ReleaseDate" />
-    <PropertyColumn Property="movie => movie.Director" />
-    <PropertyColumn Property="movie => movie.ContactEmail" />
-    <PropertyColumn Property="movie => movie.Language" />
-    <TemplateColumn Title="Poster" Context="movie">
-        @if (!string.IsNullOrEmpty(movie.PosterPath))
-        {
-            <img src="@movie.PosterPath" alt="@movie.Name poster" style="width: 50px; height: 75px; object-fit: cover;" />
-        }
-        else
-        {
-            <span class="text-muted">No image</span>
-        }
-    </TemplateColumn>
-
-    <TemplateColumn Context="movie">
-        <a href="@($"movies/edit?id={movie.Id}")">Edit</a> |
-        <a href="@($"movies/details?id={movie.Id}")">Details</a> |
-        <a href="@($"movies/delete?id={movie.Id}")">Delete</a>
-    </TemplateColumn>
-</QuickGrid>
+                    <TemplateColumn Title="Actions" Context="movie" Class="w-32">
+                        <div class="flex gap-1">
+                            <a href="@($"/movies/details?id={movie.Id}")" class="btn btn-ghost btn-xs" title="View Details">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                            </a>
+                            <a href="@($"/movies/edit?id={movie.Id}")" class="btn btn-ghost btn-xs" title="Edit">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                </svg>
+                            </a>
+                            <a href="@($"/movies/delete?id={movie.Id}")" class="btn btn-ghost btn-xs text-error" title="Delete">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </TemplateColumn>
+                </QuickGrid>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
     private DataContext context = default!;

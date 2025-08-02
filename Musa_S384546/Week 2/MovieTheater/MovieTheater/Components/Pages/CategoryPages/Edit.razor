@@ -3,44 +3,126 @@
 @using MovieTheater.Models
 @inject IDbContextFactory<DataContext> DbFactory
 @inject NavigationManager NavigationManager
+@rendermode InteractiveServer
 
-<PageTitle>Edit</PageTitle>
+<PageTitle>Edit Category - MovieTheater</PageTitle>
 
-<h1>Edit</h1>
-
-<h2>Category</h2>
-<hr />
-@if (Category is null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <div class="row">
-        <div class="col-md-4">
-            <EditForm method="post" Model="Category" OnValidSubmit="UpdateCategory" FormName="edit" Enhance>
-                <DataAnnotationsValidator />
-                <ValidationSummary role="alert"/>
-                <input type="hidden" name="Movie.Id" value="@Category.Id" />
-                <div class="mb-3">
-                <span class="text-danger">*</span>
-                    <label for="name" class="form-label">Name:</label>
-                    <InputText id="name" @bind-Value="Category.Name" class="form-control" aria-required="true"/>
-                    <ValidationMessage For="() => Category.Name" class="text-danger" />
-                </div>
-                <div class="mb-3">
-                    <label for="code" class="form-label">Code:</label>
-                    <InputText id="code" @bind-Value="Category.Code" class="form-control" />
-                    <ValidationMessage For="() => Category.Code" class="text-danger" />
-                </div>
-                <button type="submit" class="btn btn-primary">Save</button>
-            </EditForm>
+<!-- Page Header -->
+<div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+        <div>
+            <h1 class="text-4xl font-bold text-base-content">Edit Category</h1>
+            <p class="text-base-content/70 mt-2">Update category information</p>
         </div>
+        <a href="/categories" class="btn btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Categories
+        </a>
     </div>
-}
 
-<div>
-    <a href="/categories">Back to List</a>
+    @if (Category is null)
+    {
+        <div class="flex justify-center items-center h-64">
+            <span class="loading loading-spinner loading-lg"></span>
+            <span class="ml-4 text-lg">Loading category...</span>
+        </div>
+    }
+    else
+    {
+        <!-- Form Card -->
+        <div class="max-w-2xl mx-auto">
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <EditForm Model="Category" OnValidSubmit="UpdateCategory">
+                        <DataAnnotationsValidator />
+                        
+                        <ValidationSummary class="alert alert-error mb-6" role="alert"/>
+
+                        <div class="space-y-6">
+                            <!-- Category Name -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">
+                                        Category Name <span class="text-error">*</span>
+                                    </span>
+                                </label>
+                                <InputText @bind-Value="Category.Name" class="input input-bordered w-full" placeholder="e.g., Action, Comedy, Drama" />
+                                <ValidationMessage For="() => Category.Name" class="label-text-alt text-error mt-1" />
+                                <label class="label">
+                                    <span class="label-text-alt text-base-content/60">Enter a descriptive name for the category</span>
+                                </label>
+                            </div>
+
+                            <!-- Category Code -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">
+                                        Category Code <span class="text-error">*</span>
+                                    </span>
+                                </label>
+                                <InputText @bind-Value="Category.Code" class="input input-bordered w-full" placeholder="e.g., ACT, COM, DRA" />
+                                <ValidationMessage For="() => Category.Code" class="label-text-alt text-error mt-1" />
+                                <label class="label">
+                                    <span class="label-text-alt text-base-content/60">Short code for identification (2-5 characters recommended)</span>
+                                </label>
+                            </div>
+
+                            <!-- Current Stats -->
+                            <div class="card bg-base-200">
+                                <div class="card-body">
+                                    <h3 class="card-title text-lg mb-4">Category Information</h3>
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="avatar placeholder">
+                                            <div class="bg-primary text-primary-content rounded-full w-10 h-10">
+                                                <span class="text-sm font-bold">
+                                                    @(string.IsNullOrEmpty(Category.Code) ? "?" : Category.Code.Substring(0, Math.Min(2, Category.Code.Length)).ToUpper())
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold">@(string.IsNullOrEmpty(Category.Name) ? "Category Name" : Category.Name)</div>
+                                            <div class="text-sm text-base-content/60">@GetMovieCount() movies assigned</div>
+                                        </div>
+                                        <span class="badge badge-outline ml-auto">
+                                            @(string.IsNullOrEmpty(Category.Code) ? "CODE" : Category.Code.ToUpper())
+                                        </span>
+                                    </div>
+                                    @if (GetMovieCount() > 0)
+                                    {
+                                        <div class="alert alert-info">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span>This category is currently assigned to @GetMovieCount() movie(s).</span>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="divider my-8"></div>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-end">
+                            <a href="/categories" class="btn btn-outline">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                                Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Save Changes
+                            </button>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 
 @code {
@@ -95,6 +177,12 @@ else
                 throw;
             }
         }
+    }
+    
+    private int GetMovieCount()
+    {
+        using var context = DbFactory.CreateDbContext();
+        return context.Movie.Count(m => m.CategoryId == Id);
     }
     
     private bool CategoryExists(int id)
