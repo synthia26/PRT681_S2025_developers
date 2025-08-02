@@ -1,23 +1,20 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
+<div class="min-h-screen bg-base-100">
+    <NavMenu />
+    
+    <main class="min-h-screen">
+        @Body
     </main>
 </div>
 
-<div id="blazor-error-ui" data-nosnippet>
-    An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
+<div id="blazor-error-ui" data-nosnippet class="alert alert-error fixed top-4 right-4 w-auto z-50">
+    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <span>An unhandled error has occurred.</span>
+    <div class="flex gap-2">
+        <a href="." class="btn btn-sm btn-outline">Reload</a>
+        <button class="btn btn-sm btn-ghost" onclick="document.getElementById('blazor-error-ui').style.display='none'">✕</button>
+    </div>
 </div>
