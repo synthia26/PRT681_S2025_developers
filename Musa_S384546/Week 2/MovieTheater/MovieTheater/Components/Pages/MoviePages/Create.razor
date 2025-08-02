@@ -40,13 +40,25 @@
             <div class="mb-3">
                 <span class="text-danger">*</span>
                 <label for="language" class="form-label">Language:</label> 
-                <select @bind="Movie.Language">
+                <select @bind="Movie.Language" class="form-control">
                     @foreach (var language in Enum.GetValues<Language>())
                     {
                         <option value="@language">@language</option>
                     }
                 </select>
                 <ValidationMessage For="() => Movie.Language" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <span class="text-danger">*</span>
+                <label for="category" class="form-label">Category:</label> 
+                <InputSelect id="category" @bind-Value="Movie.CategoryId" class="form-control" aria-required="true">
+                    <option value="">-- Select Category --</option>
+                    @foreach (var category in Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => Movie.CategoryId" class="text-danger" /> 
             </div>        
             <div class="mb-3">
                 <label for="posterpath" class="form-label">PosterPath:</label> 
@@ -65,6 +77,14 @@
 @code {
     [SupplyParameterFromForm]
     private Movie Movie { get; set; } = new();
+    
+    private List<Category> Categories { get; set; } = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        Categories = await context.Category.ToListAsync();
+    }
 
     // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
     private async Task AddMovie()
