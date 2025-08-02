@@ -1,0 +1,7 @@
+C:\Users\barua\source\repos\ConditionalOperator\ConditionalOperator\bin\Debug\ConditionalOperator.exe.config
+C:\Users\barua\source\repos\ConditionalOperator\ConditionalOperator\bin\Debug\ConditionalOperator.exe
+C:\Users\barua\source\repos\ConditionalOperator\ConditionalOperator\bin\Debug\ConditionalOperator.pdb
+C:\Users\barua\source\repos\ConditionalOperator\ConditionalOperator\obj\Debug\ConditionalOperator.csproj.AssemblyReference.cache
+C:\Users\barua\source\repos\ConditionalOperator\ConditionalOperator\obj\Debug\ConditionalOperator.csproj.CoreCompileInputs.cache
+C:\Users\barua\source\repos\ConditionalOperator\ConditionalOperator\obj\Debug\ConditionalOperator.exe
+C:\Users\barua\source\repos\ConditionalOperator\ConditionalOperator\obj\Debug\ConditionalOperator.pdb

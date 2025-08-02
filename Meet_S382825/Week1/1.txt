@@ -1,0 +1,5 @@
+	1. Setup GitHub repository
+	2. Look for different IDE for .net development
+	3. Install Visual studio 2022
+	4. Look in basics of .net development
+

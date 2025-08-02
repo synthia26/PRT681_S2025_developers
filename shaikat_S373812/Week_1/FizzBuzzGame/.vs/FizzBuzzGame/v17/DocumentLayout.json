@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\barua\\source\\repos\\FizzBuzzGame\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2C52978A-30AF-48DB-A3CE-67D8ECCE9A88}|FizzBuzzGame\\FizzBuzzGame.csproj|c:\\users\\barua\\source\\repos\\fizzbuzzgame\\fizzbuzzgame\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C52978A-30AF-48DB-A3CE-67D8ECCE9A88}|FizzBuzzGame\\FizzBuzzGame.csproj|solutionrelative:fizzbuzzgame\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6d4078d1-5951-4ed1-ac0e-0a8099c1cce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\barua\\source\\repos\\FizzBuzzGame\\FizzBuzzGame\\Program.cs",
+              "RelativeDocumentMoniker": "FizzBuzzGame\\Program.cs",
+              "ToolTip": "C:\\Users\\barua\\source\\repos\\FizzBuzzGame\\FizzBuzzGame\\Program.cs",
+              "RelativeToolTip": "FizzBuzzGame\\Program.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAIwEUAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T22:20:24.645Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

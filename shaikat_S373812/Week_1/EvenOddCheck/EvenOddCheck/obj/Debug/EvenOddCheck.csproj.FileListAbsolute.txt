@@ -1,0 +1,8 @@
+C:\Users\barua\source\repos\EvenOddCheck\EvenOddCheck\bin\Debug\EvenOddCheck.exe.config
+C:\Users\barua\source\repos\EvenOddCheck\EvenOddCheck\bin\Debug\EvenOddCheck.exe
+C:\Users\barua\source\repos\EvenOddCheck\EvenOddCheck\bin\Debug\EvenOddCheck.pdb
+C:\Users\barua\source\repos\EvenOddCheck\EvenOddCheck\obj\Debug\EvenOddCheck.csproj.AssemblyReference.cache
+C:\Users\barua\source\repos\EvenOddCheck\EvenOddCheck\obj\Debug\EvenOddCheck.csproj.CoreCompileInputs.cache
+C:\Users\barua\source\repos\EvenOddCheck\EvenOddCheck\obj\Debug\EvenOddCheck.exe
+C:\Users\barua\source\repos\EvenOddCheck\EvenOddCheck\obj\Debug\EvenOddCheck.pdb
+C:\Users\barua\source\repos\EvenOddCheck\EvenOddCheck\obj\Debug\EvenOddCheck.exe.config

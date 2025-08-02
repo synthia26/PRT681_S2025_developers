@@ -1,0 +1,2 @@
+1. Created Git Repository for Developers Group following the initial setup.
+https://github.com/synthia26/PRT681_S2025_developers

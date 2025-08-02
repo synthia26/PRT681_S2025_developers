@@ -1,0 +1,8 @@
+C:\Users\barua\source\repos\NumericFormatting\NumericFormatting\bin\Debug\NumericFormatting.exe.config
+C:\Users\barua\source\repos\NumericFormatting\NumericFormatting\bin\Debug\NumericFormatting.exe
+C:\Users\barua\source\repos\NumericFormatting\NumericFormatting\bin\Debug\NumericFormatting.pdb
+C:\Users\barua\source\repos\NumericFormatting\NumericFormatting\obj\Debug\NumericFormatting.csproj.AssemblyReference.cache
+C:\Users\barua\source\repos\NumericFormatting\NumericFormatting\obj\Debug\NumericFormatting.csproj.CoreCompileInputs.cache
+C:\Users\barua\source\repos\NumericFormatting\NumericFormatting\obj\Debug\NumericFormatting.exe
+C:\Users\barua\source\repos\NumericFormatting\NumericFormatting\obj\Debug\NumericFormatting.pdb
+C:\Users\barua\source\repos\NumericFormatting\NumericFormatting\obj\Debug\NumericFormatting.exe.config

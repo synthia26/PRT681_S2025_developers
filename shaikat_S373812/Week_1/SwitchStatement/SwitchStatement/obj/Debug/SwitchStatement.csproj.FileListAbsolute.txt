@@ -1,0 +1,7 @@
+C:\Users\barua\source\repos\SwitchStatement\SwitchStatement\bin\Debug\SwitchStatement.exe.config
+C:\Users\barua\source\repos\SwitchStatement\SwitchStatement\bin\Debug\SwitchStatement.exe
+C:\Users\barua\source\repos\SwitchStatement\SwitchStatement\bin\Debug\SwitchStatement.pdb
+C:\Users\barua\source\repos\SwitchStatement\SwitchStatement\obj\Debug\SwitchStatement.csproj.AssemblyReference.cache
+C:\Users\barua\source\repos\SwitchStatement\SwitchStatement\obj\Debug\SwitchStatement.csproj.CoreCompileInputs.cache
+C:\Users\barua\source\repos\SwitchStatement\SwitchStatement\obj\Debug\SwitchStatement.exe
+C:\Users\barua\source\repos\SwitchStatement\SwitchStatement\obj\Debug\SwitchStatement.pdb

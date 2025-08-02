@@ -1,0 +1,8 @@
+C:\Users\barua\source\repos\Operations\Operations\bin\Debug\Operations.exe.config
+C:\Users\barua\source\repos\Operations\Operations\bin\Debug\Operations.exe
+C:\Users\barua\source\repos\Operations\Operations\bin\Debug\Operations.pdb
+C:\Users\barua\source\repos\Operations\Operations\obj\Debug\Operations.csproj.AssemblyReference.cache
+C:\Users\barua\source\repos\Operations\Operations\obj\Debug\Operations.csproj.CoreCompileInputs.cache
+C:\Users\barua\source\repos\Operations\Operations\obj\Debug\Operations.exe
+C:\Users\barua\source\repos\Operations\Operations\obj\Debug\Operations.pdb
+C:\Users\barua\source\repos\Operations\Operations\obj\Debug\Operations.exe.config

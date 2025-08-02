@@ -1,0 +1,8 @@
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringMethods\StringMethods\bin\Debug\StringMethods.exe.config
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringMethods\StringMethods\bin\Debug\StringMethods.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringMethods\StringMethods\bin\Debug\StringMethods.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringMethods\StringMethods\obj\Debug\StringMethods.csproj.AssemblyReference.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringMethods\StringMethods\obj\Debug\StringMethods.csproj.CoreCompileInputs.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringMethods\StringMethods\obj\Debug\StringMethods.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringMethods\StringMethods\obj\Debug\StringMethods.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\StringMethods\StringMethods\obj\Debug\StringMethods.exe.config
