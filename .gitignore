@@ -2,3 +2,50 @@
 .vs
 **/.DS_Store
 **/~$*
+
+
+# === .NET & Blazor ===
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# === ASP.NET Secrets & Logs ===
+*.db
+*.log
+*.sqlite
+*.pdb
+*.mdb
+*.bak
+*.tmp
+.vs/
+appsettings.*.json
+secrets.json
+
+# === Node.js / Tailwind / DaisyUI ===
+node_modules/
+*.tgz
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+pnpm-lock.yaml
+
+# === Build output ===
+dist/
+
+# === Editor/IDE Specific ===
+.idea/
+.vscode/
+*.code-workspace
+
+# === OS/General ===
+.DS_Store
+
+
+# === Optional: Environment files ===
+.env
+.env.*
+
