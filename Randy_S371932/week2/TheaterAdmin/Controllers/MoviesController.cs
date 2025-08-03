@@ -52,6 +52,11 @@ namespace TheaterAdmin.Controllers
             return View();
         }
 
+        private void PopulateCategoriesDropDown(int? selectedId = null)
+        {
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", selectedId);
+        }
+
         // POST: Movies/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -65,7 +70,7 @@ namespace TheaterAdmin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Code", movie.CategoryId);
+            PopulateCategoriesDropDown(movie.CategoryId);
             return View(movie);
         }
 
@@ -82,7 +87,7 @@ namespace TheaterAdmin.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Code", movie.CategoryId);
+            PopulateCategoriesDropDown(movie.CategoryId);
             return View(movie);
         }
 
@@ -118,7 +123,7 @@ namespace TheaterAdmin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Code", movie.CategoryId);
+            PopulateCategoriesDropDown(id);
             return View(movie);
         }
 
