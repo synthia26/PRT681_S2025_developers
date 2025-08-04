@@ -1,0 +1,7 @@
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Lists\Lists\bin\Debug\Lists.exe.config
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Lists\Lists\bin\Debug\Lists.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Lists\Lists\bin\Debug\Lists.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Lists\Lists\obj\Debug\Lists.csproj.AssemblyReference.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Lists\Lists\obj\Debug\Lists.csproj.CoreCompileInputs.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Lists\Lists\obj\Debug\Lists.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Lists\Lists\obj\Debug\Lists.pdb

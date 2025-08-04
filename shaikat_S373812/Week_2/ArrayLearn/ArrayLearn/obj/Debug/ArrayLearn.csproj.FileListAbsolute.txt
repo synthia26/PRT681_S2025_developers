@@ -1,0 +1,8 @@
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\ArrayLearn\ArrayLearn\bin\Debug\ArrayLearn.exe.config
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\ArrayLearn\ArrayLearn\bin\Debug\ArrayLearn.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\ArrayLearn\ArrayLearn\bin\Debug\ArrayLearn.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\ArrayLearn\ArrayLearn\obj\Debug\ArrayLearn.csproj.AssemblyReference.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\ArrayLearn\ArrayLearn\obj\Debug\ArrayLearn.csproj.CoreCompileInputs.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\ArrayLearn\ArrayLearn\obj\Debug\ArrayLearn.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\ArrayLearn\ArrayLearn\obj\Debug\ArrayLearn.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\ArrayLearn\ArrayLearn\obj\Debug\ArrayLearn.exe.config

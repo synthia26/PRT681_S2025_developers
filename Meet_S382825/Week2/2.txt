@@ -1,0 +1,19 @@
+	1. Introduction to .NET
+		a. it is an ecosystem for application development.
+		b. .net compiler convert source code -> intermediate language and we can use IL code/file wherever we want whether it is linux or window
+		c. For print : Console.WriteLine(" ");
+
+	2. Build your first microservice with .NET
+		a. Microservices: gives an approach to s/w development and deploy that is scalable and reliable for cloud application
+		b. Microservices architecture: large application that are split up into set of smaller services
+		c. Docker: open source platform use to automate deployment of application 
+		d. Image: when developer use docker,  they create an app or services. Then they package app or services in a container image. So, an image is static representation of app or services 
+		e. Docker file: it is text file that contain instruction for how to build docker image
+		
+	3. ASP.NET Introduction
+		a. No any http handlers
+		b. No support to form and vb.net
+		c. Learn asp.net core hello world web application in vs as well as using CLI
+		f. MVC Pattern
+		g. Razor View
+		

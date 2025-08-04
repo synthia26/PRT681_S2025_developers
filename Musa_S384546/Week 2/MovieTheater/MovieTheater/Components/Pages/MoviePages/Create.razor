@@ -1,0 +1,248 @@
+@page "/movies/create"
+@using Microsoft.EntityFrameworkCore
+@using MovieTheater.Models
+@using Microsoft.AspNetCore.Components.Forms
+@inject IDbContextFactory<DataContext> DbFactory
+@inject NavigationManager NavigationManager
+@inject IWebHostEnvironment Environment
+@rendermode InteractiveServer
+
+<PageTitle>Create Movie - MovieTheater</PageTitle>
+
+<!-- Page Header -->
+<div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+        <div>
+            <h1 class="text-4xl font-bold text-base-content">Create Movie</h1>
+            <p class="text-base-content/70 mt-2">Add a new movie to your collection</p>
+        </div>
+        <a href="/movies" class="btn btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Movies
+        </a>
+    </div>
+
+    <!-- Form Card -->
+    <div class="max-w-4xl mx-auto">
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <EditForm Model="Movie" OnValidSubmit="AddMovie">
+                    <DataAnnotationsValidator />
+                    
+                    @if (!string.IsNullOrEmpty(uploadMessage))
+                    {
+                        <div class="alert alert-info mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>@uploadMessage</span>
+                        </div>
+                    }
+
+                    <ValidationSummary class="alert alert-error mb-6" role="alert"/>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Left Column -->
+                        <div class="space-y-6">
+                            <!-- Movie Name -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">
+                                        Movie Name <span class="text-error">*</span>
+                                    </span>
+                                </label>
+                                <InputText @bind-Value="Movie.Name" class="input input-bordered w-full" placeholder="Enter movie name" />
+                                <ValidationMessage For="() => Movie.Name" class="label-text-alt text-error mt-1" />
+                            </div>
+
+                            <!-- Director -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">
+                                        Director <span class="text-error">*</span>
+                                    </span>
+                                </label>
+                                <InputText @bind-Value="Movie.Director" class="input input-bordered w-full" placeholder="Enter director name" />
+                                <ValidationMessage For="() => Movie.Director" class="label-text-alt text-error mt-1" />
+                            </div>
+
+                            <!-- Release Date -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">Release Date</span>
+                                </label>
+                                <InputDate @bind-Value="Movie.ReleaseDate" class="input input-bordered w-full" />
+                                <ValidationMessage For="() => Movie.ReleaseDate" class="label-text-alt text-error mt-1" />
+                            </div>
+
+                            <!-- Contact Email -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">Contact Email</span>
+                                </label>
+                                <InputText @bind-Value="Movie.ContactEmail" class="input input-bordered w-full" placeholder="contact@example.com" type="email" />
+                                <ValidationMessage For="() => Movie.ContactEmail" class="label-text-alt text-error mt-1" />
+                                <label class="label">
+                                    <span class="label-text-alt text-base-content/60">Optional contact information</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="space-y-6">
+                            <!-- Language -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">
+                                        Language <span class="text-error">*</span>
+                                    </span>
+                                </label>
+                                <select @bind="Movie.Language" class="select select-bordered w-full">
+                                    @foreach (var language in Enum.GetValues<Language>())
+                                    {
+                                        <option value="@language">@language</option>
+                                    }
+                                </select>
+                                <ValidationMessage For="() => Movie.Language" class="label-text-alt text-error mt-1" />
+                            </div>
+
+                            <!-- Category -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">
+                                        Category <span class="text-error">*</span>
+                                    </span>
+                                </label>
+                                <InputSelect @bind-Value="Movie.CategoryId" class="select select-bordered w-full">
+                                    <option value="">-- Select Category --</option>
+                                    @foreach (var category in Categories)
+                                    {
+                                        <option value="@category.Id">@category.Name</option>
+                                    }
+                                </InputSelect>
+                                <ValidationMessage For="() => Movie.CategoryId" class="label-text-alt text-error mt-1" />
+                                <label class="label">
+                                    <span class="label-text-alt">
+                                        <a href="/categories/create" class="link link-primary">Create new category</a>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <!-- Poster Upload -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-semibold">Poster Image</span>
+                                </label>
+                                <InputFile OnChange="HandleFileUpload" class="file-input file-input-bordered w-full" accept="image/*" />
+                                <label class="label">
+                                    <span class="label-text-alt text-base-content/60">Upload movie poster (max 5MB)</span>
+                                </label>
+                                @if (!string.IsNullOrEmpty(Movie.PosterPath))
+                                {
+                                    <div class="mt-4 p-4 bg-base-200 rounded-lg">
+                                        <div class="flex items-center gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="text-sm">File uploaded: @Path.GetFileName(Movie.PosterPath)</span>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="divider my-8"></div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-end">
+                        <a href="/movies" class="btn btn-outline">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                            Create Movie
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private Movie Movie { get; set; } = new();
+    
+    private List<Category> Categories { get; set; } = new();
+    private string uploadMessage = string.Empty;
+    private const long MaxFileSize = 5 * 1024 * 1024; // 5MB
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        Categories = await context.Category.ToListAsync();
+    }
+
+    private async Task HandleFileUpload(InputFileChangeEventArgs e)
+    {
+        uploadMessage = string.Empty;
+        
+        var file = e.File;
+        if (file != null)
+        {
+            // Validate file size
+            if (file.Size > MaxFileSize)
+            {
+                uploadMessage = "File size must be less than 5MB.";
+                return;
+            }
+
+            // Validate file type
+            var allowedTypes = new[] { "image/jpeg", "image/jpg", "image/png", "image/gif", "image/webp" };
+            if (!allowedTypes.Contains(file.ContentType))
+            {
+                uploadMessage = "Only image files (JPEG, PNG, GIF, WebP) are allowed.";
+                return;
+            }
+
+            try
+            {
+                // Create uploads directory if it doesn't exist
+                var uploadsPath = Path.Combine(Environment.WebRootPath, "uploads", "movies");
+                Directory.CreateDirectory(uploadsPath);
+
+                // Generate unique filename
+                var fileExtension = Path.GetExtension(file.Name);
+                var fileName = $"{Guid.NewGuid()}{fileExtension}";
+                var filePath = Path.Combine(uploadsPath, fileName);
+
+                // Save file
+                using var stream = new FileStream(filePath, FileMode.Create);
+                await file.OpenReadStream(MaxFileSize).CopyToAsync(stream);
+
+                // Store relative path in movie object
+                Movie.PosterPath = $"/uploads/movies/{fileName}";
+                uploadMessage = "File uploaded successfully!";
+            }
+            catch (Exception ex)
+            {
+                uploadMessage = $"Error uploading file: {ex.Message}";
+            }
+        }
+    }
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddMovie()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Movie.Add(Movie);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/movies");
+    }
+}

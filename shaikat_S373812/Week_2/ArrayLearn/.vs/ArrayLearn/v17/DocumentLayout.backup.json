@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\PRT681\\PRT681_S2025_developers\\shaikat_S373812\\Week_2\\ArrayLearn\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{20A79791-E5E6-4B60-BFB0-8552533A8E3A}|ArrayLearn\\ArrayLearn.csproj|c:\\prt681\\prt681_s2025_developers\\shaikat_s373812\\week_2\\arraylearn\\arraylearn\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20A79791-E5E6-4B60-BFB0-8552533A8E3A}|ArrayLearn\\ArrayLearn.csproj|solutionrelative:arraylearn\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6d4078d1-5951-4ed1-ac0e-0a8099c1cce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\PRT681\\PRT681_S2025_developers\\shaikat_S373812\\Week_2\\ArrayLearn\\ArrayLearn\\Program.cs",
+              "RelativeDocumentMoniker": "ArrayLearn\\Program.cs",
+              "ToolTip": "C:\\PRT681\\PRT681_S2025_developers\\shaikat_S373812\\Week_2\\ArrayLearn\\ArrayLearn\\Program.cs",
+              "RelativeToolTip": "ArrayLearn\\Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAmwBwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T11:30:47.848Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

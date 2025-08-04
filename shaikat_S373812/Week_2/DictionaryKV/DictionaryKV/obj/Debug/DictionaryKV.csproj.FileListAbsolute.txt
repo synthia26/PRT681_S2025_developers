@@ -1,0 +1,8 @@
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\DictionaryKV\DictionaryKV\bin\Debug\DictionaryKV.exe.config
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\DictionaryKV\DictionaryKV\bin\Debug\DictionaryKV.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\DictionaryKV\DictionaryKV\bin\Debug\DictionaryKV.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\DictionaryKV\DictionaryKV\obj\Debug\DictionaryKV.csproj.AssemblyReference.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\DictionaryKV\DictionaryKV\obj\Debug\DictionaryKV.csproj.CoreCompileInputs.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\DictionaryKV\DictionaryKV\obj\Debug\DictionaryKV.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\DictionaryKV\DictionaryKV\obj\Debug\DictionaryKV.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\DictionaryKV\DictionaryKV\obj\Debug\DictionaryKV.exe.config

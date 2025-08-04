@@ -1,0 +1,8 @@
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\MyString\MyString\bin\Debug\MyString.exe.config
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\MyString\MyString\bin\Debug\MyString.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\MyString\MyString\bin\Debug\MyString.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\MyString\MyString\obj\Debug\MyString.csproj.AssemblyReference.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\MyString\MyString\obj\Debug\MyString.csproj.CoreCompileInputs.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\MyString\MyString\obj\Debug\MyString.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\MyString\MyString\obj\Debug\MyString.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\MyString\MyString\obj\Debug\MyString.exe.config
