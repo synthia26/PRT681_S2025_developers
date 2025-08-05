@@ -1,0 +1,8 @@
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\NamedParam\NamedParam\bin\Debug\NamedParam.exe.config
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\NamedParam\NamedParam\bin\Debug\NamedParam.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\NamedParam\NamedParam\bin\Debug\NamedParam.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\NamedParam\NamedParam\obj\Debug\NamedParam.csproj.AssemblyReference.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\NamedParam\NamedParam\obj\Debug\NamedParam.csproj.CoreCompileInputs.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\NamedParam\NamedParam\obj\Debug\NamedParam.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\NamedParam\NamedParam\obj\Debug\NamedParam.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\NamedParam\NamedParam\obj\Debug\NamedParam.exe.config

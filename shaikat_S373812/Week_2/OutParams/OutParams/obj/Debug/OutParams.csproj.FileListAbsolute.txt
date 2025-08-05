@@ -1,0 +1,8 @@
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\OutParams\OutParams\bin\Debug\OutParams.exe.config
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\OutParams\OutParams\bin\Debug\OutParams.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\OutParams\OutParams\bin\Debug\OutParams.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\OutParams\OutParams\obj\Debug\OutParams.csproj.AssemblyReference.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\OutParams\OutParams\obj\Debug\OutParams.csproj.CoreCompileInputs.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\OutParams\OutParams\obj\Debug\OutParams.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\OutParams\OutParams\obj\Debug\OutParams.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\OutParams\OutParams\obj\Debug\OutParams.exe.config
