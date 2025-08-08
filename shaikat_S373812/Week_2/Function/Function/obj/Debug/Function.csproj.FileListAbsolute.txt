@@ -1,0 +1,8 @@
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Function\Function\bin\Debug\Function.exe.config
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Function\Function\bin\Debug\Function.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Function\Function\bin\Debug\Function.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Function\Function\obj\Debug\Function.csproj.AssemblyReference.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Function\Function\obj\Debug\Function.csproj.CoreCompileInputs.cache
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Function\Function\obj\Debug\Function.exe
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Function\Function\obj\Debug\Function.pdb
+C:\PRT681\PRT681_S2025_developers\shaikat_S373812\Week_2\Function\Function\obj\Debug\Function.exe.config
