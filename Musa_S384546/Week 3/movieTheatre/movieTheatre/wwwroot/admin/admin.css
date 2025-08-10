@@ -76,4 +76,5 @@ input, select {
 .error { color: var(--danger); font-size: 13px; margin-top: 6px; }
 .toast { margin: 0 0 10px 0; padding: 10px 12px; border-radius: 6px; background: #e7f1ff; color: #084298; border: 1px solid #b6d4fe; }
 .toast.error { background: #fde7ea; border-color: #f5c2c7; color: #842029; }
+.has-error { border-color: var(--danger); }
 

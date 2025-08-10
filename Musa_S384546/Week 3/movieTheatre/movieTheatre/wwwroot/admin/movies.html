@@ -15,19 +15,23 @@
   <div class="row" style="margin-bottom:16px;">
     <div>
       <label for="name">Name</label>
-      <input id="name" />
+      <input id="name" required />
+      <div class="error" id="err-name"></div>
     </div>
     <div>
       <label for="releaseDate">Release Date</label>
-      <input id="releaseDate" type="date" />
+      <input id="releaseDate" type="date" required />
+      <div class="error" id="err-releaseDate"></div>
     </div>
     <div>
       <label for="director">Director</label>
-      <input id="director" />
+      <input id="director" required />
+      <div class="error" id="err-director"></div>
     </div>
     <div>
       <label for="contactEmail">Contact Email</label>
-      <input id="contactEmail" />
+      <input id="contactEmail" type="email" required />
+      <div class="error" id="err-contactEmail"></div>
     </div>
     <div>
       <label for="language">Language</label>
@@ -39,7 +43,8 @@
     </div>
     <div>
       <label for="categoryId">Category</label>
-      <select id="categoryId"></select>
+      <select id="categoryId" required></select>
+      <div class="error" id="err-categoryId"></div>
     </div>
     <div class="form-actions">
       <button id="create" class="btn btn-primary">Create</button>
@@ -116,10 +121,10 @@ function gather(){
 
 async function create(){
   const body = gather();
-  if(!body.name || !body.releaseDate || !body.director || !body.contactEmail || !body.categoryId)
-    return showToast('All fields are required; select a category', true);
+  clearErrors();
+  if(!body.name || !body.releaseDate || !body.director || !body.contactEmail || !body.categoryId){ markRequired(body); return showToast('All fields are required; select a category', true); }
   const res = await fetch(`${base}/api/movies`, { method: 'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
-  if(!res.ok){ const p = await res.json(); return showToast(p.title || 'Create failed', true); }
+  if(!res.ok){ const p = await res.json(); applyErrors(p); return showToast(p.title || 'Create failed', true); }
   showToast('Created');
   resetForm();
   await load();
@@ -143,10 +148,10 @@ async function edit(id){
 async function update(){
   if(!editingId) return;
   const body = { id: editingId, ...gather() };
-  if(!body.name || !body.releaseDate || !body.director || !body.contactEmail || !body.categoryId)
-    return showToast('All fields are required; select a category', true);
+  clearErrors();
+  if(!body.name || !body.releaseDate || !body.director || !body.contactEmail || !body.categoryId){ markRequired(body); return showToast('All fields are required; select a category', true); }
   const res = await fetch(`${base}/api/movies/${editingId}`, { method: 'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
-  if(!res.ok){ const p = await res.json(); return showToast(p.title || 'Update failed', true); }
+  if(!res.ok){ const p = await res.json(); applyErrors(p); return showToast(p.title || 'Update failed', true); }
   showToast('Updated');
   resetForm();
   await load();
@@ -158,6 +163,29 @@ async function removeMovie(id){
   if(!res.ok){ const p = await res.json(); return showToast(p.detail || p.title || 'Delete failed', true); }
   showToast('Deleted');
   await load();
+}
+
+function clearErrors(){
+  $('#err-name,#err-releaseDate,#err-director,#err-contactEmail,#err-categoryId').text('');
+  $('#name,#releaseDate,#director,#contactEmail,#categoryId').removeClass('has-error');
+}
+
+function markRequired(b){
+  if(!b.name){ $('#err-name').text('Name is required'); $('#name').addClass('has-error'); }
+  if(!b.releaseDate){ $('#err-releaseDate').text('Release date is required'); $('#releaseDate').addClass('has-error'); }
+  if(!b.director){ $('#err-director').text('Director is required'); $('#director').addClass('has-error'); }
+  if(!b.contactEmail){ $('#err-contactEmail').text('Contact email is required'); $('#contactEmail').addClass('has-error'); }
+  if(!b.categoryId){ $('#err-categoryId').text('Category is required'); $('#categoryId').addClass('has-error'); }
+}
+
+function applyErrors(problem){
+  const e = problem?.errors || {};
+  if(e.Name){ $('#err-name').text(e.Name[0]); $('#name').addClass('has-error'); }
+  if(e.ReleaseDate){ $('#err-releaseDate').text(e.ReleaseDate[0]); $('#releaseDate').addClass('has-error'); }
+  if(e.Director){ $('#err-director').text(e.Director[0]); $('#director').addClass('has-error'); }
+  if(e.ContactEmail){ $('#err-contactEmail').text(e.ContactEmail[0]); $('#contactEmail').addClass('has-error'); }
+  if(e.Language){ /* enum parsing errors bubble to title usually */ }
+  if(e.CategoryId){ $('#err-categoryId').text(e.CategoryId[0]); $('#categoryId').addClass('has-error'); }
 }
 
 $('#create').on('click', create);
