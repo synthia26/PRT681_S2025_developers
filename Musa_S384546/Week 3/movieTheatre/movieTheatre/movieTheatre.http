@@ -1,0 +1,74 @@
+@movieTheatre_HostAddress = http://localhost:5120
+
+GET {{movieTheatre_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+# Categories
+GET {{movieTheatre_HostAddress}}/api/categories
+Accept: application/json
+
+###
+
+POST {{movieTheatre_HostAddress}}/api/categories
+Content-Type: application/json
+
+{
+  "name": "Comedy",
+  "code": "COM"
+}
+
+###
+
+PUT {{movieTheatre_HostAddress}}/api/categories/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Action",
+  "code": "ACT"
+}
+
+###
+
+DELETE {{movieTheatre_HostAddress}}/api/categories/99
+
+###
+
+# Movies
+GET {{movieTheatre_HostAddress}}/api/movies
+Accept: application/json
+
+###
+
+POST {{movieTheatre_HostAddress}}/api/movies
+Content-Type: application/json
+
+{
+  "name": "Inception",
+  "releaseDate": "2010-07-16",
+  "director": "Christopher Nolan",
+  "contactEmail": "info@inception.com",
+  "language": "English",
+  "categoryId": 1
+}
+
+###
+
+PUT {{movieTheatre_HostAddress}}/api/movies/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Inception (Edited)",
+  "releaseDate": "2010-07-16",
+  "director": "Christopher Nolan",
+  "contactEmail": "contact@inception.com",
+  "language": "English",
+  "categoryId": 1
+}
+
+###
+
+DELETE {{movieTheatre_HostAddress}}/api/movies/99
