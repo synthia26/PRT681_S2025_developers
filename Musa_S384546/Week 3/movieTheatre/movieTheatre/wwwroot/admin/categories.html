@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Categories</title>
+  <link rel="stylesheet" href="./admin.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Categories</h1>
+  <div id="toast"></div>
+
+  <div class="row" style="margin-bottom:16px;">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" />
+    </div>
+    <div>
+      <label for="code">Code</label>
+      <input id="code" maxlength="10" />
+    </div>
+    <div class="form-actions">
+      <button id="create" class="btn btn-primary">Create</button>
+      <button id="update" class="btn btn-secondary" disabled>Update</button>
+      <button id="reset" class="btn">Reset</button>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Id</th><th>Name</th><th>Code</th><th style="width:140px">Actions</th></tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>
+
+<script>
+const base = '';
+let editingId = null;
+
+function showToast(msg, isError=false){
+  $('#toast').html(`<div class="toast ${isError?'error':''}">${msg}</div>`);
+}
+
+async function load(){
+  const res = await fetch(`${base}/api/categories`);
+  const data = await res.json();
+  const rows = data.map(c => `
+    <tr data-id="${c.id}">
+      <td>${c.id}</td>
+      <td>${c.name}</td>
+      <td>${c.code}</td>
+      <td>
+        <button class="btn" onclick="edit(${c.id})">Edit</button>
+        <button class="btn btn-danger" onclick="removeCat(${c.id})">Delete</button>
+      </td>
+    </tr>`).join('');
+  $('#rows').html(rows);
+}
+
+function resetForm(){
+  editingId = null;
+  $('#name').val('');
+  $('#code').val('');
+  $('#update').prop('disabled', true);
+  $('#create').prop('disabled', false);
+}
+
+async function create(){
+  const payload = { name: $('#name').val().trim(), code: $('#code').val().trim() };
+  if(!payload.name || !payload.code) return showToast('Name and Code are required', true);
+  const res = await fetch(`${base}/api/categories`, { method: 'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+  if(!res.ok){ const p = await res.json(); return showToast(p.title || 'Create failed', true); }
+  showToast('Created');
+  resetForm();
+  await load();
+}
+
+async function edit(id){
+  const res = await fetch(`${base}/api/categories/${id}`);
+  if(!res.ok) return showToast('Failed to load category', true);
+  const c = await res.json();
+  editingId = c.id;
+  $('#name').val(c.name);
+  $('#code').val(c.code);
+  $('#update').prop('disabled', false);
+  $('#create').prop('disabled', true);
+}
+
+async function update(){
+  if(!editingId) return;
+  const payload = { id: editingId, name: $('#name').val().trim(), code: $('#code').val().trim() };
+  if(!payload.name || !payload.code) return showToast('Name and Code are required', true);
+  const res = await fetch(`${base}/api/categories/${editingId}`, { method: 'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+  if(!res.ok){ const p = await res.json(); return showToast(p.title || 'Update failed', true); }
+  showToast('Updated');
+  resetForm();
+  await load();
+}
+
+async function removeCat(id){
+  if(!confirm('Delete this category?')) return;
+  const res = await fetch(`${base}/api/categories/${id}`, { method: 'DELETE' });
+  if(!res.ok){ const p = await res.json(); return showToast(p.detail || p.title || 'Delete failed', true); }
+  showToast('Deleted');
+  await load();
+}
+
+$('#create').on('click', create);
+$('#update').on('click', update);
+$('#reset').on('click', resetForm);
+
+load();
+</script>
+</body>
+</html>
+
+
