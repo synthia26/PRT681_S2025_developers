@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Movies</title>
+  <link rel="stylesheet" href="./admin.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Movies</h1>
+  <div id="toast"></div>
+
+  <div class="row" style="margin-bottom:16px;">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" required />
+      <div class="error" id="err-name"></div>
+    </div>
+    <div>
+      <label for="releaseDate">Release Date</label>
+      <input id="releaseDate" type="date" required />
+      <div class="error" id="err-releaseDate"></div>
+    </div>
+    <div>
+      <label for="director">Director</label>
+      <input id="director" required />
+      <div class="error" id="err-director"></div>
+    </div>
+    <div>
+      <label for="contactEmail">Contact Email</label>
+      <input id="contactEmail" type="email" required />
+      <div class="error" id="err-contactEmail"></div>
+    </div>
+    <div>
+      <label for="language">Language</label>
+      <select id="language">
+        <option value="English">English</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Chinese">Chinese</option>
+      </select>
+    </div>
+    <div>
+      <label for="categoryId">Category</label>
+      <select id="categoryId" required></select>
+      <div class="error" id="err-categoryId"></div>
+    </div>
+    <div class="form-actions">
+      <button id="create" class="btn btn-primary">Create</button>
+      <button id="update" class="btn btn-secondary" disabled>Update</button>
+      <button id="reset" class="btn">Reset</button>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Id</th><th>Name</th><th>Release</th><th>Director</th><th>Email</th><th>Language</th><th>Category</th><th style="width:140px">Actions</th></tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>
+
+<script>
+const base = '';
+let editingId = null;
+
+function showToast(msg, isError=false){
+  $('#toast').html(`<div class="toast ${isError?'error':''}">${msg}</div>`);
+}
+
+async function loadCategories(){
+  const res = await fetch(`${base}/api/categories`);
+  const data = await res.json();
+  const options = data.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+  $('#categoryId').html(`<option value="">Select...</option>` + options);
+}
+
+async function load(){
+  const res = await fetch(`${base}/api/movies`);
+  const data = await res.json();
+  const rows = data.map(m => `
+    <tr data-id="${m.id}">
+      <td>${m.id}</td>
+      <td>${m.name}</td>
+      <td>${m.releaseDate}</td>
+      <td>${m.director}</td>
+      <td>${m.contactEmail}</td>
+      <td>${m.language}</td>
+      <td>${m.category?.name ?? ''}</td>
+      <td>
+        <button class="btn" onclick="edit(${m.id})">Edit</button>
+        <button class="btn btn-danger" onclick="removeMovie(${m.id})">Delete</button>
+      </td>
+    </tr>`).join('');
+  $('#rows').html(rows);
+}
+
+function resetForm(){
+  editingId = null;
+  $('#name').val('');
+  $('#releaseDate').val('');
+  $('#director').val('');
+  $('#contactEmail').val('');
+  $('#language').val('English');
+  $('#categoryId').val('');
+  $('#update').prop('disabled', true);
+  $('#create').prop('disabled', false);
+}
+
+function gather(){
+  return {
+    name: $('#name').val().trim(),
+    releaseDate: $('#releaseDate').val(),
+    director: $('#director').val().trim(),
+    contactEmail: $('#contactEmail').val().trim(),
+    language: $('#language').val(),
+    categoryId: Number($('#categoryId').val()) || null
+  };
+}
+
+async function create(){
+  const body = gather();
+  clearErrors();
+  if(!body.name || !body.releaseDate || !body.director || !body.contactEmail || !body.categoryId){ markRequired(body); return showToast('All fields are required; select a category', true); }
+  const res = await fetch(`${base}/api/movies`, { method: 'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+  if(!res.ok){ const p = await res.json(); applyErrors(p); return showToast(p.title || 'Create failed', true); }
+  showToast('Created');
+  resetForm();
+  await load();
+}
+
+async function edit(id){
+  const res = await fetch(`${base}/api/movies/${id}`);
+  if(!res.ok) return showToast('Failed to load movie', true);
+  const m = await res.json();
+  editingId = m.id;
+  $('#name').val(m.name);
+  $('#releaseDate').val(m.releaseDate);
+  $('#director').val(m.director);
+  $('#contactEmail').val(m.contactEmail);
+  $('#language').val(m.language);
+  $('#categoryId').val(m.categoryId);
+  $('#update').prop('disabled', false);
+  $('#create').prop('disabled', true);
+}
+
+async function update(){
+  if(!editingId) return;
+  const body = { id: editingId, ...gather() };
+  clearErrors();
+  if(!body.name || !body.releaseDate || !body.director || !body.contactEmail || !body.categoryId){ markRequired(body); return showToast('All fields are required; select a category', true); }
+  const res = await fetch(`${base}/api/movies/${editingId}`, { method: 'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+  if(!res.ok){ const p = await res.json(); applyErrors(p); return showToast(p.title || 'Update failed', true); }
+  showToast('Updated');
+  resetForm();
+  await load();
+}
+
+async function removeMovie(id){
+  if(!confirm('Delete this movie?')) return;
+  const res = await fetch(`${base}/api/movies/${id}`, { method: 'DELETE' });
+  if(!res.ok){ const p = await res.json(); return showToast(p.detail || p.title || 'Delete failed', true); }
+  showToast('Deleted');
+  await load();
+}
+
+function clearErrors(){
+  $('#err-name,#err-releaseDate,#err-director,#err-contactEmail,#err-categoryId').text('');
+  $('#name,#releaseDate,#director,#contactEmail,#categoryId').removeClass('has-error');
+}
+
+function markRequired(b){
+  if(!b.name){ $('#err-name').text('Name is required'); $('#name').addClass('has-error'); }
+  if(!b.releaseDate){ $('#err-releaseDate').text('Release date is required'); $('#releaseDate').addClass('has-error'); }
+  if(!b.director){ $('#err-director').text('Director is required'); $('#director').addClass('has-error'); }
+  if(!b.contactEmail){ $('#err-contactEmail').text('Contact email is required'); $('#contactEmail').addClass('has-error'); }
+  if(!b.categoryId){ $('#err-categoryId').text('Category is required'); $('#categoryId').addClass('has-error'); }
+}
+
+function applyErrors(problem){
+  const e = problem?.errors || {};
+  if(e.Name){ $('#err-name').text(e.Name[0]); $('#name').addClass('has-error'); }
+  if(e.ReleaseDate){ $('#err-releaseDate').text(e.ReleaseDate[0]); $('#releaseDate').addClass('has-error'); }
+  if(e.Director){ $('#err-director').text(e.Director[0]); $('#director').addClass('has-error'); }
+  if(e.ContactEmail){ $('#err-contactEmail').text(e.ContactEmail[0]); $('#contactEmail').addClass('has-error'); }
+  if(e.Language){ /* enum parsing errors bubble to title usually */ }
+  if(e.CategoryId){ $('#err-categoryId').text(e.CategoryId[0]); $('#categoryId').addClass('has-error'); }
+}
+
+$('#create').on('click', create);
+$('#update').on('click', update);
+$('#reset').on('click', resetForm);
+
+loadCategories().then(load);
+</script>
+</body>
+</html>
+
+
