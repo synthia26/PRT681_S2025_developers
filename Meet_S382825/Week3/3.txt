@@ -1,0 +1,17 @@
+	1. Microsoft Learning - Write your first C# code
+	
+	2. Introduction to .NET | C#.NET Tutorial | Mr. Bangar Raju
+		a. Introduction to .NET | C#.NET Tutorial | Mr. Bangar Raju
+		b. .NET - Develop Desktop / Web/ Mobile applicaiotns
+		c. 30+ languages
+  
+	3. Youtube - Step-by-step ASP.NET MVC Tutorial for Beginners | Mosh
+		a. Step-by-step ASP.NET MVC Tutorial for Beginners | Mosh	
+		b. Mode- application data and behaviour
+		c. Controller - responsible for handling http request
+		d. View - UI that display to user
+		e. Router - select right controller request
+	
+		
+	
+	
