@@ -1,0 +1,102 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Movies Admin (API + jQuery)</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h1>Movies</h1>
+
+    <div>
+        <label>Name <input id="name"></label>
+        <label>Release <input id="release" type="date"></label>
+        <label>Director <input id="director"></label>
+        <label>Email <input id="email" type="email"></label>
+        <label>
+            Language
+            <select id="language">
+                <option value="0">English</option>
+                <option value="1">Japanese</option>
+                <option value="2">Chinese</option>
+            </select>
+        </label>
+        <label>
+            Category
+            <select id="category"></select>
+        </label>
+        <button id="btnCreate">Create</button>
+    </div>
+
+    <table border="1" id="tbl">
+        <thead><tr><th>ID</th><th>Name</th><th>Director</th><th>Lang</th><th>Category</th><th>Actions</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+const apiBase = "/api";
+
+function loadCategories() {
+  return $.getJSON(`${apiBase}/categories`, function(list){
+    const $sel = $("#category").empty();
+    list.forEach(c => $sel.append(`<option value="${c.id}">${c.name}</option>`));
+  });
+}
+
+function loadMovies() {
+  $.getJSON(`${apiBase}/movies`, function(list){
+    const $tb = $("#tbl tbody").empty();
+    list.forEach(m => {
+      $tb.append(
+        `<tr data-id="${m.id}">
+           <td>${m.id}</td>
+           <td>${m.name}</td>
+           <td>${m.director}</td>
+           <td>${m.language}</td>
+           <td>${m.categoryName ?? ""}</td>
+           <td>
+             <button class="del">Delete</button>
+           </td>
+         </tr>`);
+    });
+  });
+}
+
+$(document).on("click", ".del", function(){
+  const id = $(this).closest("tr").data("id");
+  $.ajax({ url: `${apiBase}/movies/${id}`, method:"DELETE"})
+    .done(loadMovies)
+    .fail(xhr => alert(xhr.responseText || "Delete failed"));
+});
+
+$("#btnCreate").on("click", function(){
+  const dto = {
+    name: $("#name").val(),
+    releaseDate: $("#release").val() || null,
+    director: $("#director").val(),
+    contactEmailAddress: $("#email").val() || null,
+    language: parseInt($("#language").val(),10),
+    categoryId: parseInt($("#category").val(),10)
+  };
+  $.ajax({
+    url: `${apiBase}/movies`, method:"POST",
+    contentType:"application/json", data: JSON.stringify(dto)
+  })
+  .done(() => { loadMovies(); })
+  .fail(xhr => {
+    if (xhr.status === 400 && xhr.responseJSON?.errors) {
+      const errs = xhr.responseJSON.errors;
+      alert("Validation: " + Object.keys(errs).map(k=>`${k}: ${errs[k].join(",")}`).join(" | "));
+    } else {
+      alert(xhr.responseText || "Create failed");
+    }
+  });
+});
+
+$(async function(){
+  await loadCategories();
+  loadMovies();
+});
+    </script>
+</body>
+</html>
