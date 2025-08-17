@@ -1,0 +1,16 @@
+bin/
+obj/
+out/
+artifacts/
+.vs/
+.vscode/
+*.user
+*.suo
+logs/
+*.log
+TestResults/
+
+# SQLite
+todos_mvc.db
+todos_mvc.db-shm
+todos_mvc.db-wal
