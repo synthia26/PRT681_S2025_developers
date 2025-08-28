@@ -1,0 +1,14 @@
+@model BookStoreApp.DAL.Book
+@{
+    ViewData["Title"] = "Create Book";
+}
+<h1>Create Book</h1>
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a class="btn btn-secondary" href="@Url.Action("Index")">Back to List</a>
+</form>
