@@ -1,1 +1,3 @@
-# code updated in week03 with latest code checkin
+# code updated in week02 with latest code checkin
+
+# code update updated and fixed issues
