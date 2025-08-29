@@ -95,8 +95,3 @@ https://localhost:7001
 - Use tools like Postman or curl to test the API endpoints directly
 - The API returns JSON responses
 - All endpoints support standard HTTP methods
-
-
-## License
-
-This project is created for educational purposes as part of the PRT681 course.
