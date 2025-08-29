@@ -96,47 +96,6 @@ https://localhost:7001
 - The API returns JSON responses
 - All endpoints support standard HTTP methods
 
-## Database
-
-The application uses SQLite for data persistence:
-- Database file: `theater_api.db`
-- Migrations are automatically applied on startup
-- Entity Framework Core handles database operations
-
-## Validation
-
-The application includes comprehensive validation:
-- Required field validation
-- String length constraints
-- Email format validation
-- Foreign key constraints
-- Unique constraints on category codes
-
-## Project Structure
-
-```
-TheaterAdminAPI/
-├── Controllers/          # API controllers
-├── Models/              # Entity models and DbContext
-├── Migrations/          # EF Core migrations
-├── wwwroot/            # Static files
-│   ├── index.html      # Main client interface
-│   └── js/
-│       └── app.js      # jQuery client logic
-├── Program.cs          # Application entry point
-└── appsettings.json    # Configuration
-```
-
-## Commits History
-
-- `chore: initialize ASP.NET Core Web API project`
-- `chore: add EF Core and SQLite packages`
-- `feat(models): add Category, Movie models and AppDbContext`
-- `feat(controllers): add Categories and Movies API controllers`
-- `feat(config): configure database connection and update Program.cs`
-- `feat(migrations): add InitialCreate migration and update database`
-- `feat(client): add jQuery client with HTML interface and static file serving`
-- `feat(client): add complete jQuery client with HTML interface`
 
 ## License
 
