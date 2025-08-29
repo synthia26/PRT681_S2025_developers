@@ -1,0 +1,87 @@
+﻿@page "/counter"
+@page "/counter/{initialCount:int?}"
+@rendermode InteractiveServer
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+@* <button class="btn btn-primary" @onclick="IncrementCountAsync">Click me</button> *@
+@* <button class="btn btn-primary" @onclick="() => currentCount += 1">Click me</button> *@
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<MyButton OnClick="IncrementCount" class="btn btn-success">MyButton</MyButton>
+
+@* <div class="mt-3">
+    <input type="text" @oninput="OnInput">
+    <p>@text</p>
+</div> *@
+
+<div class="mt-3">
+    <input type="text" @bind="text" @bind:event="oninput" @bind:after="Search">
+    <button @onclick="OnClickClear">clear</button>
+    <p>@text</p>
+    <p>@searchResult</p>
+</div>
+
+<div style="background-color: lightgreen;" @onmouseover="MouseOver" @onmouseout="MouseOut">@divText</div>
+
+@if (currentCount > 3)
+{
+    <p>You win!</p>
+}
+
+<ul>
+    @for (int i = 0; i < currentCount; i++)
+    {
+        <li>Clicked!</li>
+    }
+</ul>
+
+<p>InitialCount=@initialCount</p>
+
+@code {
+    private int currentCount = 0;
+
+    protected override void OnInitialized()
+    {
+        currentCount = initialCount;
+    }
+
+    string text = "";
+    string divText = "Mouse out";
+    string searchResult = "";
+
+    [Parameter]
+    public int IncrementAmount { get; set; } = 1;
+
+    [Parameter]
+    public int initialCount { get; set; }
+
+    @* private void IncrementCount()
+    {
+        currentCount += IncrementAmount;
+    } *@
+
+    async Task IncrementCountAsync()
+    {
+        await Task.Delay(1000);
+        currentCount++;
+    }
+    private void IncrementCount(MouseEventArgs args)
+    {
+        currentCount++;
+    }
+    private void OnInput(ChangeEventArgs args) => text = (string)args.Value!;
+    private void MouseOver(MouseEventArgs args) => divText = "Mouse Over";
+    private void MouseOut(MouseEventArgs args) => divText = "Mouse Out";
+    private void OnChange(ChangeEventArgs args) => text = (string)args.Value!;
+    private void OnClickClear(MouseEventArgs args) => text = "";
+
+    async Task Search() {
+        searchResult = "Searching ...";
+        await Task.Delay(2000);
+        searchResult = $"Found {Random.Shared.Next()} results!";
+    }
+}

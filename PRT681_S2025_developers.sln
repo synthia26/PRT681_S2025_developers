@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ritiz_S372192", "Ritiz_S372192", "{B6B17C39-FF5F-2727-470C-D921650424F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Week_1", "Week_1", "{78111F6D-CB7E-47EE-2375-29C1F683E670}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp", "Ritiz_S372192\Week_1\MyApp\MyApp.csproj", "{D2182EA9-4561-0646-95C3-30AECED22E48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2182EA9-4561-0646-95C3-30AECED22E48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2182EA9-4561-0646-95C3-30AECED22E48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2182EA9-4561-0646-95C3-30AECED22E48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2182EA9-4561-0646-95C3-30AECED22E48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{78111F6D-CB7E-47EE-2375-29C1F683E670} = {B6B17C39-FF5F-2727-470C-D921650424F6}
+		{D2182EA9-4561-0646-95C3-30AECED22E48} = {78111F6D-CB7E-47EE-2375-29C1F683E670}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F0665B4-626C-44A9-8826-02D50FE7D61B}
+	EndGlobalSection
+EndGlobal

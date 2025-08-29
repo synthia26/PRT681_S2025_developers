@@ -1,0 +1,31 @@
+@model IEnumerable<BookStoreApp.DAL.Book>
+@{
+    ViewData["Title"] = "Books";
+}
+<h1>Books</h1>
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create")">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.ID })">Edit</a> |
+                <a href="@Url.Action("Details", new { id = item.ID })">Details</a> |
+                <a href="@Url.Action("Delete", new { id = item.ID })">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

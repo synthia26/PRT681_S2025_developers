@@ -1,0 +1,72 @@
+COTS
+BPNM 2.0 Diagrams
+visio
+draw.io
+winmerge
+notepad++
+keypass
+excel - reports, formulas, vlookup tool
+docx - document review, mail merge
+JIRA
+Confluence
+SharePoint - folder ->publish doc in internet
+SourceTree 
+Git GUI (mention 3 popular tool of git)
+teams, outlook
+Boltsamic/Figma, Canva
+-------
+Data Analyst tool:
+PL/SQL - tables, functions, stored procedures, views, scalar functions, linked servers, scheduled jobs
+Excel
+MySQL
+PostGreSql
+SQLite
+SSMS - IDE - SQL Server 2022/2019/2015 LTM - difference need to know
+Power BI, Tableau
+Azure Data Studio
+MS Visual Studio
+SSIS, SSAS 
+Azure Data Fabric
+Data Warehouse
+----------
+VS Studio
+VS code
+Github
+Postman
+Fiddler
+Developer tools
+C#, Python, .Net
+HTML, CSS, LESS, Javascript, Typescript
+
+Arelia, Angular, New JS,
+OOPS
+bash script
+shell script
+linux
+AWS, Azure
+MVC, Blazor, Web APIs, REST APIs,
+SOAP vs REST
+N-tier Architecture 
+Dependency Injection
+SCRUM
+Kanban
+Pair Programming 
+Extreme programming
+---------
+
+Testing
+
+JMeter
+Postman
+Selenium
+TestRain
+Python, Javascript
+
+intended purpose of view
+depenedency injection 
+inversion of control
+CI/CD what happens & why
+SDLC
+release cycles
+ORM - how works
+entity framework - version
