@@ -1,0 +1,148 @@
+In .NET, Object-Oriented Programming (OOP) is implemented through the four main pillars: Encapsulation, Inheritance, Polymorphism, and Abstraction. Let me break these down with simple explanations and .NET (C#) examples:
+
+1. Encapsulation
+
+Definition: Bundling data (fields) and methods (functions) into a single unit (class) and controlling access to them.
+
+Why: Protects the object’s internal state and only exposes necessary details.
+
+In .NET: Done using private, public, protected, internal access modifiers and properties.
+
+public class BankAccount
+{
+    private double balance; // private field (hidden from outside)
+
+    public double Balance   // public property
+    {
+        get { return balance; }
+        private set { balance = value; } // setter is private
+    }
+
+    public void Deposit(double amount)
+    {
+        if (amount > 0)
+            Balance += amount;
+    }
+}
+
+2. Inheritance
+
+Definition: A class (child/derived) can inherit fields and methods from another class (parent/base).
+
+Why: Promotes code reusability and hierarchy.
+
+In .NET: Use : to inherit.
+
+public class Animal
+{
+    public void Eat()
+    {
+        Console.WriteLine("This animal eats food.");
+    }
+}
+
+public class Dog : Animal   // Dog inherits from Animal
+{
+    public void Bark()
+    {
+        Console.WriteLine("Dog barks.");
+    }
+}
+
+
+Usage:
+
+Dog d = new Dog();
+d.Eat();   // inherited
+d.Bark();  // own method
+
+3. Polymorphism
+
+Definition: Same method name but different behavior (many forms).
+
+Why: Allows flexibility and reuse of code.
+
+In .NET: Achieved by Method Overloading (compile-time) and Method Overriding (runtime with virtual & override).
+
+Method Overloading (Compile-time):
+
+public class Calculator
+{
+    public int Add(int a, int b) => a + b;
+    public double Add(double a, double b) => a + b; // different parameter type
+}
+
+
+Method Overriding (Runtime):
+
+public class Animal
+{
+    public virtual void Speak()
+    {
+        Console.WriteLine("Animal speaks.");
+    }
+}
+
+public class Dog : Animal
+{
+    public override void Speak()
+    {
+        Console.WriteLine("Dog barks.");
+    }
+}
+
+
+Usage:
+
+Animal a = new Dog();
+a.Speak();  // Output: Dog barks (runtime polymorphism)
+
+4. Abstraction
+
+Definition: Hiding implementation details and exposing only essential features.
+
+Why: Defines what an object does, not how.
+
+In .NET: Done using abstract classes and interfaces.
+
+Abstract Class:
+
+public abstract class Shape
+{
+    public abstract void Draw(); // abstract method
+}
+
+public class Circle : Shape
+{
+    public override void Draw()
+    {
+        Console.WriteLine("Drawing a Circle.");
+    }
+}
+
+
+Interface:
+
+public interface IPlayable
+{
+    void Play();
+}
+
+public class Guitar : IPlayable
+{
+    public void Play()
+    {
+        Console.WriteLine("Playing Guitar.");
+    }
+}
+
+
+✅ Summary of OOP in .NET
+
+Encapsulation → Protect data (private, public, properties).
+
+Inheritance → Reuse code (: keyword).
+
+Polymorphism → Many forms (overloading & overriding).
+
+Abstraction → Hide details (abstract classes, interfaces).
