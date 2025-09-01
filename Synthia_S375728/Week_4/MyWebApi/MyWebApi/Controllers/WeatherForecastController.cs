@@ -6,9 +6,10 @@ namespace MyWebApi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
+        private static List<WeatherForecast> forecasts = new List<WeatherForecast>
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            // Example data
+            new WeatherForecast { Date = DateOnly.FromDateTime(DateTime.Now), TemperatureC = 25, Summary = "Sunny" }
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
@@ -18,16 +19,30 @@ namespace MyWebApi.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return forecasts;
+        }
+
+        [HttpPut("{index}")]
+        public IActionResult Put(int index, [FromBody] WeatherForecast updatedForecast)
+        {
+            if (index < 0 || index >= forecasts.Count)
+                return NotFound();
+
+            forecasts[index] = updatedForecast;
+            return NoContent();
+        }
+
+        [HttpDelete("{index}")]
+        public IActionResult Delete(int index)
+        {
+            if (index < 0 || index >= forecasts.Count)
+                return NotFound();
+
+            forecasts.RemoveAt(index);
+            return NoContent();
         }
     }
 }
