@@ -1,0 +1,32 @@
+@rootURL = http://localhost:5251
+
+GET {{rootURL}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{rootURL}}/api/games
+Accept: application/json
+###
+GET {{rootURL}}/api/games/5
+Accept:application/json
+
+###
+POST {{rootURL}}/api/games
+Content-Type: application/json
+{
+  "name": "Hades",
+  "company": "Supergiant Games",
+  "releaseYear": 2020
+}
+###
+PUT {{rootURL}}/api/games/7
+Content-Type: application/json
+{
+  "id": 7,
+  "name": "Hollow Knight",
+  "company": "Team Cherry",
+  "releaseYear": 2017
+}
+
+###
+DELETE {{rootURL}}/api/games/6
