@@ -1,0 +1,15 @@
+  1. Work with files and directories in a .NET app
+	- The System.IO namespace contains built-in types that allow you to interact with files and directories. For example, you can retrieve collections of files and directories based on search criteria and get and set properties for files and directories.
+	- Directory.EnumerateFiles - To list the names of all of the files in a directory
+  - Directory.EnumerateDirectories - To read through and list the names of the top-level directories
+
+  2. Create a web API with ASP.NET Core controllers
+	- REST: A common pattern for building APIs with HTTP
+	- Representational State Transfer (REST) is an architectural style for building web services. REST requests are made -over HTTP. They use the same HTTP verbs that web browsers use to retrieve webpages and send data to servers. The verbs are:
+	GET: Retrieve data from the web service.
+	POST: Create a new item of data on the web service.
+	PUT: Update an item of data on the web service.
+	PATCH: Update an item of data on the web service by describing a set of instructions about how the item should be modified. The sample application in this module doesn't use this verb.
+  DELETE: Delete an item of data on the web service.
+
+  3. Kubernetes Administrator 2024: Kubernetes Architecture & Components
