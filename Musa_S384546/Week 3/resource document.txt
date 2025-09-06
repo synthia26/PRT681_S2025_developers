@@ -1,0 +1,2 @@
+1. Tailwindcss: https://www.youtube.com/watch?v=ft30zcMlFao
+2. swagger: https://www.youtube.com/watch?v=uvUdOiPQLSI

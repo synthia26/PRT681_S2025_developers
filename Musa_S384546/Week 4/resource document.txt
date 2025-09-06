@@ -1,0 +1,3 @@
+1. Dockerise your .NET Application: https://www.youtube.com/watch?v=yQtgY4VG3kM
+2. Containerize .NET Core + SQL Server: Docker vs Docker Compose (2025): https://www.youtube.com/watch?v=LPXVmkQLX3U
+3. Unit Testing in C# 2022: 1. Intro + First Test: https://www.youtube.com/watch?v=aq3IbO0RwAQ&list=PL82C6-O4XrHeyeJcI5xrywgpfbrqdkQd4

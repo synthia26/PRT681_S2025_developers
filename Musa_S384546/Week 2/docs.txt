@@ -1,0 +1,2 @@
+1. Dotnet: https://www.youtube.com/watch?v=RWXKysImabs&t=419s
+2. Tailwindcss for styling in dotnet: https://www.youtube.com/watch?v=NPYQUDmOeYI
