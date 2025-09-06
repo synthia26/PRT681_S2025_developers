@@ -1,0 +1,40 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: simpleDocker.Api/Dockerfile
+    image: simpledocker-api:latest
+    container_name: simpledocker-api
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__Default=Server=db,1433;Database=SimpleDb;User Id=sa;Password=${SA_PASSWORD:-YourStrong!Passw0rd};Encrypt=False;TrustServerCertificate=True;
+    ports:
+      - "5080:8080"
+    networks:
+      - appnet
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: simpledocker-sql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${SA_PASSWORD:-YourStrong!Passw0rd}
+      - MSSQL_PID=Developer
+    ports:
+      - "15433:1433"
+    volumes:
+      - mssqldata:/var/opt/mssql
+    networks:
+      - appnet
+
+volumes:
+  mssqldata:
+
+networks:
+  appnet:
+    driver: bridge
+
+
