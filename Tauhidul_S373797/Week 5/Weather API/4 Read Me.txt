@@ -1,0 +1,52 @@
+📖 Description
+A weather information API that demonstrates query parameters, data filtering, and search functionality.
+🎯 Learning Objectives
+
+Query parameters handling
+Data filtering and searching
+LINQ operations
+Case-insensitive string comparisons
+Optional parameters
+
+📦 Required Packages
+xml<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.13" />
+<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+🚀 Setup Instructions
+
+Create the project:
+bashdotnet new webapi -n WeatherAPI
+cd WeatherAPI
+
+Install packages:
+bashdotnet add package Swashbuckle.AspNetCore
+
+Add the WeatherController from the code above
+
+🔧 API Endpoints
+MethodEndpointDescriptionParametersGET/api/weatherGet all weather dataNoneGET/api/weather/{city}Get weather for specific citycity (path parameter)GET/api/weather/searchSearch weather with filtersminTemp, maxTemp, description (query parameters)
+📝 Example Usage
+Get All Weather:
+bash
+curl -X GET "https://localhost:7xxx/api/weather"
+Get Weather for Specific City:
+bash
+curl -X GET "https://localhost:7xxx/api/weather/London"
+Search with Temperature Range:
+bash
+curl -X GET "https://localhost:7xxx/api/weather/search?minTemp=20&maxTemp=30"
+Search with Description:
+bash
+curl -X GET "https://localhost:7xxx/api/weather/search?description=sunny"
+Combined Search:
+bash
+curl -X GET "https://localhost:7xxx/api/weather/search?minTemp=18&maxTemp=25&description=cloudy"
+
+Using PowerShell:
+powershell# Get weather for London
+Invoke-RestMethod -Uri "https://localhost:7xxx/api/weather/London" -Method Get
+
+# Search with parameters
+Invoke-RestMethod -Uri "https://localhost:7xxx/api/weather/search?minTemp=20&maxTemp=30" -Method Get
+🏃‍♂️ Running the Application
+bash
+dotnet run
