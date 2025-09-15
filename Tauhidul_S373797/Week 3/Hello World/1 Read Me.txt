@@ -1,0 +1,40 @@
+1. Hello World API
+📖 Description
+A simple API that demonstrates basic GET endpoints and route parameters. Perfect for understanding the fundamentals of .NET Web API structure.
+🎯 Learning Objectives
+
+Understanding basic API controller structure
+Creating GET endpoints
+Working with route parameters
+Returning JSON responses
+
+📦 Required Packages
+xml<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.13" />
+<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+🚀 Setup Instructions
+
+Create the project:
+bashdotnet new webapi -n HelloWorldAPI
+cd HelloWorldAPI
+
+Install packages (if not already included):
+bashdotnet add package Swashbuckle.AspNetCore
+
+Replace the default controller with the HelloController from the code above
+Update Program.cs with the provided Program.cs code
+
+🔧 API Endpoints
+MethodEndpointDescriptionExample ResponseGET/api/helloReturns a simple greeting{"message": "Hello, World!", "timestamp": "2024-01-15T10:30:00"}GET/api/hello/{name}Returns personalized greeting{"message": "Hello, John!", "timestamp": "2024-01-15T10:30:00"}
+📝 Example Usage
+Using curl:
+bash# Basic hello
+curl -X GET "https://localhost:7xxx/api/hello"
+
+# Hello with name
+curl -X GET "https://localhost:7xxx/api/hello/John"
+Using PowerShell:
+powershellInvoke-RestMethod -Uri "https://localhost:7xxx/api/hello" -Method Get
+Invoke-RestMethod -Uri "https://localhost:7xxx/api/hello/John" -Method Get
+🏃‍♂️ Running the Application
+bashdotnet run
+Then visit: https://localhost:7xxx/swagger

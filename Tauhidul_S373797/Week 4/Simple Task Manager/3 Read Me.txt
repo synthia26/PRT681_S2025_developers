@@ -1,0 +1,53 @@
+3. Task Manager API
+📖 Description
+A complete CRUD (Create, Read, Update, Delete) API for managing tasks. Demonstrates all HTTP methods and status codes.
+🎯 Learning Objectives
+
+Full CRUD operations
+HTTP status codes (200, 201, 404, 400)
+In-memory data storage
+Data validation
+RESTful API design principles
+
+📦 Required Packages
+xml<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.13" />
+<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+🚀 Setup Instructions
+
+Create the project:
+bashdotnet new webapi -n TaskManagerAPI
+cd TaskManagerAPI
+
+Install packages:
+bashdotnet add package Swashbuckle.AspNetCore
+
+Add the TasksController from the code above
+
+🔧 API Endpoints
+MethodEndpointDescriptionRequest BodyGET/api/tasksGet all tasksNoneGET/api/tasks/{id}Get specific taskNonePOST/api/tasksCreate new taskTask objectPUT/api/tasks/{id}Update existing taskTask objectDELETE/api/tasks/{id}Delete taskNone
+📝 Example Usage
+Task Object Format:
+json{
+  "title": "Complete project documentation",
+  "description": "Write comprehensive README files for all APIs",
+  "isCompleted": false
+}
+Create Task:
+bashcurl -X POST "https://localhost:7xxx/api/tasks" \
+     -H "Content-Type: application/json" \
+     -d '{"title": "Learn .NET", "description": "Complete API tutorial", "isCompleted": false}'
+Get All Tasks:
+bashcurl -X GET "https://localhost:7xxx/api/tasks"
+Update Task:
+bashcurl -X PUT "https://localhost:7xxx/api/tasks/1" \
+     -H "Content-Type: application/json" \
+     -d '{"title": "Learn .NET", "description": "Completed API tutorial", "isCompleted": true}'
+Delete Task:
+bashcurl -X DELETE "https://localhost:7xxx/api/tasks/1"
+⚠️ Important Notes
+
+This API uses in-memory storage, so data is lost when the application restarts
+For production applications, use a database like SQL Server with Entity Framework
+
+🏃‍♂️ Running the Application
+bashdotnet run

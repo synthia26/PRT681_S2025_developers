@@ -1,0 +1,73 @@
+5. User Registration API
+📖 Description
+A user management API with registration and login functionality, demonstrating model validation, data annotations, and authentication logic.
+🎯 Learning Objectives
+
+Data annotations for validation
+Model state validation
+Custom validation logic
+Security considerations (password handling)
+Authentication concepts
+Error handling and user feedback
+
+📦 Required Packages
+xml<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.13" />
+<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+🚀 Setup Instructions
+
+Create the project:
+bashdotnet new webapi -n UserRegistrationAPI
+cd UserRegistrationAPI
+
+Install packages:
+bashdotnet add package Swashbuckle.AspNetCore
+dotnet add package System.ComponentModel.Annotations
+
+Add the UsersController from the code above
+
+🔧 API Endpoints
+MethodEndpointDescriptionRequest BodyPOST/api/users/registerRegister new userUser registration objectPOST/api/users/loginUser loginLogin credentialsGET/api/usersGet all usersNoneGET/api/users/{id}Get specific userNone
+📝 Example Usage
+User Registration Format:
+json{
+  "username": "johndoe",
+  "email": "john@example.com",
+  "password": "securepassword123"
+}
+Login Request Format:
+json{
+  "username": "johndoe",
+  "password": "securepassword123"
+}
+Register User:
+bashcurl -X POST "https://localhost:7xxx/api/users/register" \
+     -H "Content-Type: application/json" \
+     -d '{"username": "johndoe", "email": "john@example.com", "password": "securepass123"}'
+Login:
+bashcurl -X POST "https://localhost:7xxx/api/users/login" \
+     -H "Content-Type: application/json" \
+     -d '{"username": "johndoe", "password": "securepass123"}'
+Get All Users:
+bashcurl -X GET "https://localhost:7xxx/api/users"
+🔒 Security Notes
+
+⚠️ WARNING: This is a demo API. In production:
+
+Never store passwords in plain text
+Use proper password hashing (bcrypt, Argon2, etc.)
+Implement proper authentication tokens (JWT)
+Use HTTPS
+Implement rate limiting
+Add proper logging and monitoring
+
+
+
+📋 Validation Rules
+
+Username: 3-50 characters, required
+Email: Valid email format, required, unique
+Password: Minimum 6 characters, required
+
+🏃‍♂️ Running the Application
+bashdotnet run
