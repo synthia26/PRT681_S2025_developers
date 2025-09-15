@@ -1,0 +1,89 @@
+Setup Instructions
+🔧 Prerequisites
+
+.NET 7.0 or later - Download here
+Visual Studio Code (recommended) or Visual Studio 2022
+Postman or similar API testing tool (optional)
+
+🛠️ General Setup Steps
+
+Verify .NET installation:
+bashdotnet --version
+
+Create a new Web API project:
+bashdotnet new webapi -n YourApiName
+cd YourApiName
+
+Run the application:
+bashdotnet run
+
+Access Swagger UI:
+
+Open browser and go to: https://localhost:7xxx/swagger
+Replace 7xxx with the actual port number shown in your terminal
+
+
+
+🧪 Testing Your APIs
+Option 1: Using Swagger UI
+
+Run your API
+Open https://localhost:7xxx/swagger
+Click on any endpoint to test it directly
+
+Option 2: Using curl (Command Line)
+Examples are provided in each API section above.
+Option 3: Using Postman
+
+Download and install Postman
+Create a new request
+Set the method (GET, POST, etc.)
+Enter the URL (e.g., https://localhost:7xxx/api/hello)
+For POST requests, add JSON body in the "Body" tab
+Click "Send"
+
+Option 4: Using PowerShell
+Examples are provided in each API section above.
+📁 Project Structure
+YourApiName/
+├── Controllers/
+│   └── YourController.cs
+├── Program.cs
+├── YourApiName.csproj
+├── Properties/
+│   └── launchSettings.json
+└── README.md
+🔍 Troubleshooting
+Common Issues:
+
+Port already in use:
+bash# Kill the process using the port
+netstat -ano | findstr :7xxx
+taskkill /PID <PID_NUMBER> /F
+
+HTTPS certificate issues:
+bashdotnet dev-certs https --trust
+
+Package restore issues:
+bashdotnet restore
+
+Build errors:
+bashdotnet clean
+dotnet build
+
+
+📚 Next Steps
+
+Add Database Integration: Learn Entity Framework Core
+Add Authentication: Implement JWT tokens
+Add Logging: Use Serilog or built-in logging
+Add Unit Tests: Learn xUnit testing framework
+Deploy to Cloud: Azure App Service, AWS, or Docker
+
+🤝 Contributing
+These examples are for educational purposes. Feel free to modify and extend them for your learning needs.
+📄 License
+These examples are provided under MIT License for educational use.
+
+Happy Learning! 🚀
+For questions or issues, refer to the official .NET documentation.
